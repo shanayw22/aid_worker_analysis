@@ -1,0 +1,219 @@
+---
+title: "Attack Trends"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+    df-print: paged
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## Temporal Patterns in Attack Impact
+
+The following interactive line plot shows how different attack types have affected aid workers over time:
+
+```{python}
+import altair as alt
+import pandas as pd
+import plotly.express as px
+
+incidents = pd.read_csv("data/security_incidents.csv")
+# Create a fixed color mapping for Means of attack (to match the map)
+attack_types = sorted(incidents['Means of attack'].unique().tolist())
+colors = [
+    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
+    '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'
+]
+color_scale = alt.Scale(
+    domain=attack_types,
+    range=colors[:len(attack_types)]
+)
+
+# Create a selection based on legend clicks
+legend_selection = alt.selection_point(
+    fields=['Means of attack'],
+    bind='legend',
+    toggle='event.shiftKey'  # Enable shift-click for multiple selections
+)
+
+# Line plot with legend selection
+line_plot = alt.Chart(incidents).mark_line(
+    point=True  # Add points at each data point
+).encode(
+    x=alt.X('Year:O', title='Year'),
+    y=alt.Y('sum(Total affected):Q', 
+        title='Total Affected'
+    ),
+    color=alt.Color('Means of attack:N', 
+        legend=alt.Legend(
+            title='Means of Attack',
+            orient='left'
+        ),
+        scale=color_scale
+    ),
+    opacity=alt.condition(legend_selection, alt.value(1), alt.value(0.05)),  # Dim unselected lines
+    tooltip=[
+        'Year:O',
+        'Means of attack:N',
+        alt.Tooltip('sum(Total affected):Q', title='Total Affected'),
+        alt.Tooltip('Month:T', title='Month', timeUnit='month', format='%B')
+    ]
+).add_params(
+    legend_selection
+).properties(
+    title='Trends in Total Affected by Attack Type Over Years',
+    width=700,
+    height=400
+).interactive()
+
+line_plot
+```
+
+<br> **Key Insights:**
+
+-   The visualization reveals distinct patterns in the impact of different attack types over time
+
+-   Notable features include:
+
+    -   Periodic spikes in certain attack types
+
+    -   Long-term trends in the effectiveness of different attack methods
+
+    -   Seasonal variations in attack impacts
+
+**Interactive Features:**
+
+-   Click legend items to focus on specific attack types
+
+-   Hold Shift to select multiple attack types
+
+-   Hover over points for detailed information
+
+-   Pan and zoom to explore specific time periods
+
+## Comparative Analysis of Aid Worker Casualties
+
+The following visualization examines the trends in casualties among national and international aid workers over time. This analysis is crucial for understanding the differential impacts of security incidents on various categories of humanitarian personnel.
+
+```{python}
+data = pd.read_csv("data/security_incidents.csv") # Load your actual 
+
+# Create a trend analysis of national vs international casualties
+trend_data = data.groupby('Year').agg({
+    'Nationals killed': 'sum',
+    'Nationals wounded': 'sum',
+    'Internationals killed': 'sum',
+    'Internationals wounded': 'sum'
+}).reset_index()
+
+fig5 = px.line(
+    trend_data,
+    x='Year',
+    y=['Nationals killed', 'Nationals wounded', 
+       'Internationals killed', 'Internationals wounded'],
+    title="Trends in National vs International Aid Worker Casualties",
+    labels={
+        'value': 'Number of Casualties',
+        'variable': 'Category'
+    },
+    color_discrete_map={
+        'Nationals killed': '#d62728',     # Red
+        'Nationals wounded': '#ff7f0e',     # Orange
+        'Internationals killed': '#1f77b4', # Blue
+        'Internationals wounded': '#2ca02c'  # Green
+    }
+)
+
+# Update layout
+fig5.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Number of Casualties",
+    legend_title="Casualty Type",
+    hovermode='x unified',
+    plot_bgcolor='white',
+    legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01
+    )
+)
+
+# Add gridlines
+fig5.update_xaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor='rgba(128, 128, 128, 0.2)'
+)
+
+fig5.update_yaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor='rgba(128, 128, 128, 0.2)'
+)
+
+fig5.show()
+
+```
+
+<br> **Key Findings:**
+
+-   National aid workers consistently face higher casualty rates compared to international staff
+
+-   The gap between national and international casualties has widened over time
+
+-   Wounded personnel generally outnumber fatalities across both categories
+
+## Fatalities by Actor Type
+
+The stacked bar chart below illustrates the annual distribution of fatalities by different actor types:
+
+```{python}
+fig1 = px.bar(
+    data.groupby(['Year', 'Actor type'])['Nationals killed'].sum().reset_index(),
+    x="Year", y="Nationals killed", color="Actor type",
+    title="Annual Attack Fatalities by Actor Type",
+    labels={"Nationals killed": "Fatalities"},
+    barmode="stack"
+)
+fig1.show()
+```
+
+<br> **Key Findings:**
+
+-   The data reveals patterns in the lethality of different actor types
+
+-   Notable trends include:
+
+    -   Variation in the proportion of fatalities attributed to different actors
+
+    -   Changes in the overall lethality of attacks over time
+
+    -   Identification of most lethal actor types
+
+## Implications for Humanitarian Operations
+
+This temporal analysis provides valuable insights for:
+
+1.  **Tactical Planning:**
+    -   Identification of high-risk periods
+    -   Understanding of evolving threat patterns
+    -   Recognition of emerging attack methods
+2.  **Strategic Response:**
+    -   Development of adaptive security measures
+    -   Resource allocation for different threat types
+    -   Training updates based on trend analysis
+3.  **Risk Mitigation:**
+    -   Seasonal security adjustments
+    -   Actor-specific security protocols
+    -   Geographic deployment considerations
+
+These trends help organizations anticipate and prepare for evolving security challenges in humanitarian operations.

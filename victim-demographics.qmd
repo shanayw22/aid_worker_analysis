@@ -1,0 +1,295 @@
+---
+title: "Victim Demographics"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+    df-print: paged
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## Gender Breakdown of Affected Individuals
+
+The following chart shows the gender breakdown of affected individuals in the dataset.
+
+```{python}
+import pandas as pd
+import plotly.graph_objects as go
+
+incidents = pd.read_csv("data/security_incidents.csv")
+# Group by Year to sum gender data for all countries
+gender_yearly = incidents.groupby('Year')[['Gender Male', 'Gender Female', 'Gender Unknown']].sum().reset_index()
+
+# Create stacked bar chart
+fig3 = go.Figure()
+
+fig3.add_trace(
+    go.Bar(
+        x=gender_yearly['Year'],
+        y=gender_yearly['Gender Male'],
+        name="Male",
+        marker_color='rgba(73, 119, 171, 0.8)'
+    )
+)
+
+fig3.add_trace(
+    go.Bar(
+        x=gender_yearly['Year'],
+        y=gender_yearly['Gender Female'],
+        name="Female",
+        marker_color='rgba(214, 39, 40, 0.8)'
+    )
+)
+
+fig3.add_trace(
+    go.Bar(
+        x=gender_yearly['Year'],
+        y=gender_yearly['Gender Unknown'],
+        name="Unknown",
+        marker_color='rgba(127, 127, 127, 0.8)'
+    )
+)
+
+# Update layout
+fig3.update_layout(
+    title={
+        'text': "Global Gender Distribution of Affected Aid Workers by Year",
+        'x': 0.5,
+        'xanchor': 'center'
+    },
+    barmode='stack',
+    xaxis_title="Year",
+    yaxis_title="Total Affected",
+    showlegend=True,
+    legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01
+    ),
+    plot_bgcolor='white',
+    margin=dict(l=0, r=0, t=50, b=0)
+)
+
+# Update axes
+fig3.update_xaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor='rgba(128, 128, 128, 0.2)'
+)
+
+fig3.update_yaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor='rgba(128, 128, 128, 0.2)'
+)
+
+fig3.show()
+
+```
+
+<br> **Key Insights:**
+
+-   Male aid workers consistently represent the majority of affected individuals across all years
+
+-   There's a notable spike in incidents affecting all genders around 2008-2009
+
+-   The proportion of cases with unknown gender has decreased in recent years, suggesting improved reporting practices
+
+-   Female aid workers show relatively consistent numbers over time, but remain a smaller proportion of total victims
+
+## Geographic Distribution of Gender-Based Incidents
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# Load the dataset
+incidents = pd.read_csv("data/security_incidents.csv")
+
+# Group by country and sum gender columns
+gender_country = incidents.groupby('Country')[['Gender Male', 'Gender Female', 'Gender Unknown']].sum().reset_index()
+
+# Melt the dataframe for plotting
+gender_country_melted = gender_country.melt(
+    id_vars='Country',
+    value_vars=['Gender Male', 'Gender Female', 'Gender Unknown'],
+    var_name='Gender',
+    value_name='Total Affected'
+)
+
+# Create a treemap for gender distribution by country
+fig1 = px.treemap(
+    gender_country_melted,
+    path=['Country', 'Gender'],
+    values='Total Affected',
+    color='Total Affected',
+    title='Gender Proportion of Affected Victims by Country',
+    color_continuous_scale='Viridis'
+)
+
+fig1.update_layout(
+    margin=dict(l=0, r=0, t=50, b=0)
+)
+
+fig1.show()
+```
+
+<br> **Key Insights:**
+
+-   Certain countries show disproportionately high numbers of affected aid workers
+
+-   The gender distribution varies significantly by country, with some regions showing higher proportions of female victims
+
+-   Unknown gender cases are particularly prevalent in conflict zones, possibly due to reporting challenges
+
+-   Larger squares indicate countries with more frequent incidents, helping identify high-risk areas
+
+## Attack Context Distribution
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# Load the dataset
+incidents = pd.read_csv("data/security_incidents.csv")
+
+# Group data by attack context to sum affected individuals
+context_affected = incidents.groupby('Attack context')['Total affected'].sum().reset_index()
+
+# Create bar chart for victim distribution by attack context
+fig3 = px.bar(
+    context_affected.sort_values(by='Total affected', ascending=False),
+    x='Total affected',
+    y='Attack context',
+    title='Victim Count Distribution by Attack Context',
+    orientation='h',
+    labels={'Total affected': 'Number of Victims', 'Attack context': 'Context of Attack'}
+)
+
+fig3.update_layout(
+    plot_bgcolor='white',
+    margin=dict(l=10, r=10, t=50, b=10),
+    xaxis_title='Total Affected',
+    yaxis_title='Attack Context'
+)
+
+fig3.show()
+```
+
+<br> **Key Insights:**
+
+-   Certain attack contexts consistently result in higher numbers of victims
+
+-   The distribution suggests that some types of attacks are more prevalent or more likely to affect multiple individuals
+
+-   Understanding these patterns can help in developing targeted security protocols
+
+-   The data highlights which situations pose the greatest risks to aid workers
+
+## Gender Distribution by Attack Context
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# Load the dataset
+incidents = pd.read_csv("data/security_incidents.csv")
+
+# Group by attack context and sum gender data
+gender_context = incidents.groupby('Attack context')[['Gender Male', 'Gender Female', 'Gender Unknown']].sum().reset_index()
+
+# Melt the dataframe for stacked bar plot
+gender_context_melted = gender_context.melt(
+    id_vars='Attack context',
+    value_vars=['Gender Male', 'Gender Female', 'Gender Unknown'],
+    var_name='Gender',
+    value_name='Total Affected'
+)
+
+# Create stacked bar chart
+fig5 = px.bar(
+    gender_context_melted,
+    x='Attack context',
+    y='Total Affected',
+    color='Gender',
+    title='Stacked Bar Chart: Gender Breakdown by Attack Context',
+    labels={'Total Affected': 'Number of Victims', 'Attack context': 'Context of Attack'},
+    barmode='stack'
+)
+
+fig5.update_layout(
+    xaxis_title='Attack Context',
+    yaxis_title='Total Affected',
+    plot_bgcolor='white',
+    margin=dict(l=10, r=10, t=50, b=10)
+)
+
+fig5.show()
+```
+
+<br> **Key Insights:**
+
+-   Different attack contexts show varying gender distributions among victims
+
+-   Some attack types appear to disproportionately affect certain genders
+
+-   The presence of unknown gender cases varies by attack context, suggesting reporting challenges in specific situations
+
+-   This information can be valuable for gender-specific security training and protocols
+
+## Heatmap of Incidents by Top 15 Regions and Year
+
+```{python}
+import plotly.graph_objects as go
+import pandas as pd
+import plotly.express as px
+
+incidents = pd.read_csv("data/security_incidents.csv")
+# Grouping by region and year
+
+region_year_pivot = incidents.pivot_table(values='Total affected', index='Region', columns='Year', aggfunc='sum', fill_value=0).reset_index()
+
+# Calculate total affected per region and sort
+region_year_pivot['Total Affected'] = region_year_pivot.drop('Region', axis=1).sum(axis=1)
+top_regions = region_year_pivot.sort_values(by='Total Affected', ascending=False).head(15)
+
+# Create heatmap for top 15 regions
+fig = px.imshow(
+    top_regions.drop(['Region', 'Total Affected'], axis=1).values,
+    labels=dict(x="Year", y="Region", color="Total Affected"),
+    x=top_regions.columns[1:-1],  # Exclude 'Region' and 'Total Affected'
+    y=top_regions['Region'],
+    color_continuous_scale='OrRd',
+    title='Heatmap of Incidents by Top 15 Regions and Year'
+)
+fig.show()
+```
+
+<br> **Key Insights:**
+
+-   The heatmap reveals temporal hotspots in specific regions
+
+-   Some regions show persistent high-risk periods while others show more sporadic patterns
+
+-   Recent years indicate shifting patterns of risk across different regions
+
+-   The visualization helps identify both chronic and emerging risk areas for aid operations
+
+These insights can inform:
+
+-   Security protocol development
+
+-   Resource allocation for protection measures
+
+-   Gender-specific safety training
+
+-   Regional risk assessment and mitigation strategies

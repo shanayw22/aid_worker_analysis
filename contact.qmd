@@ -1,0 +1,25 @@
+---
+title: "Contact Information"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    number-sections: false
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+---
+
+# Contact Information
+
+## General Inquiries
+
+### Research Team
+- **Email**: [sw1449@georgetown.edu]
+- **Office Hours**: Monday-Friday, 9:00 AM - 5:00 PM EST
+
+### Technical Support
+- **Email**: [sw1449@georgetown.edu]
+- **Response Time**: Within 24-48 business hours
+

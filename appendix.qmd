@@ -1,0 +1,152 @@
+---
+title: "Appendix"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    number-sections: false
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+    df-print: paged
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+
+## Data Sources
+
+### Primary Dataset
+- **Source**: Aid Worker Security Database (AWSD)
+- **Time Period**: 1997-2025
+- **Coverage**: Global security incidents involving humanitarian aid workers
+- **URL**: [Humanitarian Outcomes - Aid Worker Security Database](https://aidworkersecurity.org/)
+- **Last Updated**: March 2025
+
+### Data Collection Methodology
+
+1. **Incident Verification**
+   - Multiple source verification
+   - Official reports
+   - Media coverage
+   - Organization confirmations
+
+2. **Classification Criteria**
+   - Attack types
+   - Actor categories
+   - Casualty definitions
+   - Geographic coding
+
+## Data Dictionary
+
+### Key Variables
+| Variable | Description | Type | Values |
+|----------|-------------|------|---------|
+| Incident ID | Unique identifier for each incident | Integer | 1-n |
+| Year | Year of incident occurrence | Integer | 1997-2023 |
+| Country | Country where incident occurred | String | Country names |
+| Region | Geographic region | String | Regional classifications |
+| Means of attack | Type of attack | String | Various attack types |
+| Actor type | Category of perpetrator | String | Various actor types |
+| Total affected | Total number of victims | Integer | 0-n |
+
+### Categorical Variables
+
+#### Attack Types
+
+- Shooting
+- Kidnapping
+- IED/Mine
+- Aerial bombardment
+- Other
+
+#### Actor Types
+
+- Non-state armed groups
+- Criminal entities
+- State actors
+- Unknown
+- Other
+
+## Methodology Notes
+
+### Data Processing
+
+1. **Cleaning Procedures**
+   - Handling missing values
+   - Standardizing geographic names
+   - Resolving conflicting reports
+   - Validating casualty counts
+
+2. **Analysis Methods**
+   - Temporal trend analysis
+   - Geographic clustering
+   - Pattern recognition
+   - Statistical testing
+
+### Limitations
+
+1. **Data Collection**
+   
+   - Potential reporting bias in conflict zones
+   - Varying quality of incident documentation
+   - Delayed reporting in some regions
+   - Incomplete gender information
+
+2. **Geographic Coverage**
+   
+   - Varying reporting quality by region
+   - Access limitations in certain areas
+   - Political sensitivities affecting reporting
+
+3. **Classification Challenges**
+   
+   - Ambiguous attack types
+   - Multiple actor involvement
+   - Complex incident contexts
+   - Evolving definitions
+
+## Additional Resources
+
+### Related Databases
+
+1. **UN Security Incident Database**
+   - Complementary incident data
+   - UN-specific focus
+
+2. **NGO Security Reports**
+   - Organization-specific data
+   - Regional security bulletins
+
+### Reference Materials
+
+1. **Security Guidelines**
+   - UNDSS Security Guidelines
+   - InterAction Security Guidelines
+   - NGO Security Principles
+
+2. **Research Publications**
+   - Academic studies on aid worker security
+   - Policy papers
+   - Annual security reports
+
+## Technical Notes
+
+### Visualization Tools
+- Python (Version 3.8+)
+- Libraries:
+  - Plotly (5.x)
+  - Pandas (1.x)
+  - Altair (4.x)
+
+### Data Processing Tools
+
+- Data cleaning: Pandas
+- Geographic analysis: GeoPandas
+- Statistical analysis: NumPy, SciPy
+
+This appendix provides comprehensive documentation of data sources, methodologies, and technical details to support transparency and reproducibility of the analysis.

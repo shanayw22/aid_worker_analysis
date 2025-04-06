@@ -1,0 +1,75 @@
+---
+title: "Privacy Policy"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    number-sections: false
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+---
+
+# Privacy Policy
+
+## Data Collection and Usage
+
+### Incident Data
+- All security incident data is collected from publicly available sources
+- Personal identifiers have been removed to protect victim privacy
+- Geographic coordinates are generalized for sensitive locations
+- Temporal data is standardized to protect operational security
+
+### Data Protection Measures
+1. **Anonymization**
+   - Names and personal details are excluded
+   - Organization names are generalized where necessary
+   - Specific location details are masked when required
+
+2. **Sensitive Information**
+   - Details that could compromise ongoing operations are withheld
+   - Information about security measures is generalized
+   - Specific vulnerabilities are not disclosed
+
+## Information Sharing
+
+### Usage Guidelines
+- Data should be used for analytical and research purposes only
+- Redistribution requires appropriate attribution
+- Commercial use requires explicit permission
+- Sensitive information should not be republished
+
+### Restrictions
+- No reverse engineering of anonymized data
+- No attempt to identify specific individuals
+- No linking with other databases without authorization
+- No use that could compromise aid worker security
+
+## Security Measures
+
+### Data Security
+- Regular security audits
+- Encrypted storage
+- Access controls
+- Regular updates
+
+### Incident Reporting
+- Standardized reporting protocols
+- Privacy-preserving documentation
+- Secure communication channels
+- Controlled access to detailed reports
+
+## Updates and Changes
+
+### Policy Reviews
+- Annual policy review
+- Updates based on emerging threats
+- Stakeholder consultation
+- Compliance monitoring
+
+### Notification Process
+- Changes will be documented
+- Users will be notified of significant updates
+- Transition periods for major changes
+- Regular communication of policy updates

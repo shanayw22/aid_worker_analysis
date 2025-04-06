@@ -1,0 +1,818 @@
+---
+title: "Mapping Threats to Aid Workers"
+date: "March 20, 2025"
+format:
+  html:
+    toc: true
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+    df-print: paged
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+abstract: |
+  This project explores global security incidents affecting humanitarian 
+  aid workers, using interactive visualizations and statistical analysis 
+  to highlight patterns, regions of high risk, and the impact of violence 
+  on aid operations worldwide.
+---
+
+## Introduction
+
+The global humanitarian sector faces significant security challenges that directly impact aid delivery and worker safety. In recent decades, humanitarian aid workers have increasingly become targets of violence, with incidents ranging from direct attacks to kidnappings and collateral damage in conflict zones. This analysis examines security incidents affecting aid workers from 1997 to 2025, focusing on the patterns, geographical distribution, and organizational impact of these events. Through interactive visualizations, we explore the evolving nature of security threats and their implications for different humanitarian organizations.
+
+```{python}
+import plotly.express as px
+import plotly.graph_objects as go
+import pandas as pd
+
+# Load data
+incidents = pd.read_csv('data/security_incidents.csv')
+
+# Aggregate incidents by country, year, and attack type
+incidents_grouped = incidents.groupby(
+    ['Country', 'Year', 'Means of attack']
+)['Total affected'].sum().reset_index()
+
+# Identify the primary means of attack for each country and year based on total affected
+primary_attack = incidents_grouped.loc[
+    incidents_grouped.groupby(['Country', 'Year'])['Total affected'].idxmax()
+]
+
+# Create discrete color mapping using distinct colors
+unique_attacks = sorted(primary_attack['Means of attack'].unique())
+colors = [
+    '#1f77b4',  # Blue
+    '#ff7f0e',  # Orange
+    '#2ca02c',  # Green
+    '#d62728',  # Red
+    '#9467bd',  # Purple
+    '#8c564b',  # Brown
+    '#e377c2',  # Pink
+    '#7f7f7f',  # Gray
+    '#bcbd22',  # Yellow-green
+    '#17becf',  # Cyan
+    '#aec7e8',  # Light blue
+    '#ffbb78',  # Light orange
+    '#98df8a'   # Light green
+][:len(unique_attacks)]
+
+# Create a proper discrete colorscale
+discrete_colorscale = []
+for i, color in enumerate(colors):
+    discrete_colorscale.extend([[i/len(colors), color], [(i+1)/len(colors), color]])
+
+# Create figure
+fig = go.Figure()
+
+# Initial year data
+initial_year = primary_attack['Year'].min()
+initial_data = primary_attack[primary_attack['Year'] == initial_year]
+
+# Map attack types to numeric values
+attack_to_num = {attack: i for i, attack in enumerate(unique_attacks)}
+
+# Add choropleth trace
+fig.add_trace(go.Choropleth(
+    locations=initial_data['Country'],
+    locationmode='country names',
+    z=[attack_to_num[attack] for attack in initial_data['Means of attack']],
+    colorscale=discrete_colorscale,
+    showscale=True,
+    marker_line_color='black',
+    marker_line_width=0.5,
+    customdata=initial_data[['Year', 'Means of attack', 'Total affected']].values,
+    colorbar=dict(
+        title='Attack Types',
+        ticktext=unique_attacks,
+        tickvals=list(range(len(unique_attacks))),  # Changed to match the z-values
+        tickmode='array',
+        lenmode='fraction',
+        len=0.75,
+        yanchor='middle',
+        y=0.5,
+        xanchor='left',
+        x=-0.1,
+        ticks='outside',
+        tickfont=dict(size=12),
+        thickness=20,
+        ticklabelposition="outside"
+    )
+))
+
+# Update geos settings
+fig.update_geos(
+    visible=False,
+    projection_type='orthographic',
+    showland=True,
+    landcolor='khaki',
+    showocean=True,
+    oceancolor='lightblue',
+    showframe=False,
+    projection=dict(
+        rotation=dict(
+            lon=0,
+            lat=20,
+            roll=0
+        )
+    ),
+    center=dict(
+        lon=0,
+        lat=20
+    ),
+    showcoastlines=True,
+    coastlinecolor='gray',
+    showcountries=True,
+    countrycolor='gray'
+)
+
+# Create steps for the year slider
+steps = []
+years = sorted(primary_attack['Year'].unique())
+for year in years:
+    year_data = primary_attack[primary_attack['Year'] == year]
+    step = dict(
+        method='update',
+        args=[{
+            'locations': [year_data['Country']],
+            'z': [[attack_to_num[attack] for attack in year_data['Means of attack']]],
+            'customdata': [year_data[['Year', 'Means of attack', 'Total affected']].values]
+        }, {
+            'geo.projection.rotation': [fig.layout.geo.projection.rotation],
+            'geo.center': [fig.layout.geo.center]
+        }],
+        label=str(year)
+    )
+    steps.append(step)
+
+# Update layout
+fig.update_layout(
+    height=600,
+    width=800,
+    title=dict(
+        text='Security Incidents by Country (Primary Attack Type)',
+        x=0.5,
+        xanchor='center',
+        yanchor='top',
+        y=0.95,
+        font=dict(size=20)
+    ),
+    margin=dict(l=100, r=0, t=50, b=0),
+    showlegend=False,
+    # Add year slider
+    sliders=[dict(
+    active=0,
+    currentvalue={"prefix": "Year: "},
+    pad={"t": 50},
+    steps=steps
+)]
+)
+
+# Add hover template
+fig.update_traces(
+    hovertemplate=(
+        '<b>Country:</b> %{location}<br>' +
+        '<b>Year:</b> %{customdata[0]}<br>' +
+        '<b>Primary Attack Type:</b> %{customdata[1]}<br>' +
+        '<b>Total Affected:</b> %{customdata[2]}<br>' +
+        '<extra></extra>'
+    )
+)
+
+fig.show()
+```
+
+## Geographic Distribution of Incidents
+
+### Map of Incidents by Attack Type
+
+The chart below provides a comprehensive overview of how attack types targeting aid workers vary across regions and time, with key insights highlighting critical trends. Regional Concentration of Attack Types: Certain attacks, such as aerial bombardments, are concentrated in the Middle East, particularly in Syria and Yemen, with a significant rise in recent years, resulting in high casualties.
+
+```{python}
+from vega_datasets import data
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import requests
+import altair as alt
+import plotly.express as px
+import plotly.graph_objects as go
+
+incidents = pd.read_csv("data/security_incidents.csv")
+# Create a fixed color mapping for Means of attack
+attack_types = sorted(incidents['Means of attack'].unique().tolist())
+colors = [
+    '#E41A1C', '#377EB8', '#4DAF4A', '#FF7F00', '#FFFF33',
+    '#A65628', '#F781BF', '#999999', '#66CC99', '#C2C2F0'
+]
+color_scale = alt.Scale(
+    domain=attack_types,
+    range=colors[:len(attack_types)]
+)
+
+# Function to create the map visualization
+def create_map_chart(incidents_data):
+    # Get world map data from vega datasets
+    world = alt.topo_feature(data.world_110m.url, 'countries')
+    
+    # Base map layer
+    base = alt.Chart(world).mark_geoshape(
+        fill='khaki',  # Slightly darker gray-green for better land contrast
+        stroke='light blue',  # Keeping the same muted blue-gray for borders
+        strokeWidth=0.3
+    ).project(
+        'naturalEarth1',
+        rotate=[-10, 0, 0]
+    ).properties(
+        width=600,
+        height=400
+    )
+
+    # Ocean background
+    ocean = alt.Chart(
+        alt.sphere()
+    ).mark_geoshape(
+        fill='light blue',  # Keeping the same light blue for oceans
+        stroke='',
+        strokeWidth=0.1
+    )
+
+    # Create the points layer
+    points = alt.Chart(incidents_data).mark_circle(opacity=0.6).encode(
+        longitude='Longitude:Q',
+        latitude='Latitude:Q',
+        size=alt.Size('Total affected:Q', 
+            scale=alt.Scale(range=[20, 2000]),
+            title='Total Affected',
+            legend=alt.Legend(orient='left', offset=0)
+        ),
+        color=alt.Color('Means of attack:N', 
+            title='Attack Type',
+            scale=color_scale,  # Use our fixed color scale
+            legend=alt.Legend(orient='left', offset=0)
+        ),
+        tooltip=['Country:N', 'City:N', 'Means of attack:N', 'Total affected:Q', 'Year:Q']
+    ).transform_filter(
+        'datum.Year == yearFilter'
+    ).transform_filter(
+        'attackFilter == "All" || datum["Means of attack"] == attackFilter'
+    )
+
+    return (ocean + base + points).properties(
+        width=800,
+        height=400,
+        title='Global Distribution of Security Incidents'
+    ).configure_legend(
+        orient='left',
+        offset=0,
+        padding=5
+    )
+
+# Create year range selection with a default value
+year_slider = alt.binding_range(
+    min=int(incidents['Year'].min()),
+    max=int(incidents['Year'].max()),
+    step=1,
+    name='Year: '
+)
+year_selection = alt.param(
+    name='yearFilter',
+    bind=year_slider,
+    value=2000  # Default value
+)
+
+# Create attack type dropdown with a default value
+attack_dropdown = alt.binding_select(
+    options=['All'] + attack_types,  # Use the same sorted list
+    name='Attack Type: '
+)
+attack_selection = alt.param(
+    name='attackFilter',
+    bind=attack_dropdown,
+    value='All'  # Default value
+)
+
+# Create the final interactive visualization
+filtered_data = incidents[incidents['Latitude'].notna() & incidents['Longitude'].notna()]
+chart = create_map_chart(filtered_data).add_params(
+    year_selection,
+    attack_selection
+)
+
+chart
+```
+
+<br>
+
+Temporal Trends in Attack Patterns: Attack frequencies fluctuate over time, with aerial bombardments and bombings increasing in the Middle East over the past decade, while Sub-Saharan Africa has experienced a surge in armed assaults and ambushes. Conversely, kidnappings remain more prevalent in West Africa and parts of South Asia, driven by ransom demands and political motives. Magnitude of Impact: The size of the markers illustrates the scale of affected aid workers, with larger markers in conflict-heavy regions indicating high-impact events that often lead to mass casualties. The graph highlights these regional and temporal patterns, enabling humanitarian organizations to develop targeted strategies that mitigate risks, enhance preparedness, and safeguard aid workers operating in high-risk environments.
+
+### Map of Affected Aid Workers by Organization
+
+```{python}
+import plotly.express as px
+import plotly.graph_objects as go
+import pandas as pd
+
+# Prepare the data - aggregate by country, organization, and year
+country_org_year_data = incidents.groupby(['Country', 'Year'])[['UN', 'INGO', 'ICRC', 'NRCS and IFRC', 'NNGO', 'Other']].sum().reset_index()
+
+# Get the maximum value for consistent color scale
+max_value = country_org_year_data[['UN', 'INGO', 'ICRC', 'NRCS and IFRC', 'NNGO', 'Other']].max().max()
+
+# Create figure
+fig = go.Figure()
+
+# Color scheme
+colorscale = 'YlOrRd'  # Yellow to Orange to Red scale
+
+# Get min and max years
+min_year = int(incidents['Year'].min())
+max_year = int(incidents['Year'].max())
+
+# Add traces for each organization and year (initially hidden)
+for org in ['UN', 'INGO', 'ICRC', 'NRCS and IFRC', 'NNGO', 'Other']:
+    for year in range(min_year, max_year + 1):
+        year_data = country_org_year_data[country_org_year_data['Year'] == year]
+        
+        fig.add_trace(
+            go.Choropleth(
+                locations=year_data['Country'],
+                z=year_data[org],
+                locationmode='country names',
+                colorscale=colorscale,
+                name=org,
+                visible=False,
+                zmin=0,
+                zmax=50,
+                colorbar=dict(
+                    title='Number of<br>Aid Workers<br>Affected',
+                    thickness=15,
+                    len=0.7,
+                    x=0.95
+                ),
+                hovertemplate="<b>%{location}</b><br>" +
+                             f"{org} Number of Aid Workers Affected: " + "%{z}<br>" +
+                             f"Year: {year}<br>" +
+                             "<extra></extra>"
+            )
+        )
+
+# Calculate number of traces per organization
+traces_per_org = max_year - min_year + 1
+
+# Make first organization's first year visible by default
+fig.data[0].visible = True
+
+# Create buttons for updating the chart
+buttons = []
+for idx, org in enumerate(['UN', 'INGO', 'ICRC', 'NRCS and IFRC', 'NNGO', 'Other']):
+    visibility = []
+    for i in range(6 * traces_per_org):
+        # Show only the traces for current organization, but maintain year selection
+        org_match = i // traces_per_org == idx
+        year_match = i % traces_per_org == 0  # Start with first year
+        visibility.append(org_match and year_match)
+    
+    buttons.append(
+        dict(
+            label=org,
+            method="update",
+            args=[{
+                "visible": visibility
+            },
+            {
+                "title": {
+                    "text": f"Global Distribution of Security Incidents by Organization Type (1997-2025)<br>" +
+                           f"<sup>Geographic Heat Map of Aid Workers Affected - {org}</sup>",
+                    "x": 0.5,
+                    "font": {"size": 16}
+                }
+            }]
+        )
+    )
+
+# Create slider
+steps = []
+for year_idx, year in enumerate(range(min_year, max_year + 1)):
+    # Create visibility array for this year
+    visibility = []
+    current_org = 0  # Track which organization is currently selected
+    
+    # Find which organization is currently visible
+    for i in range(6):
+        if fig.data[i * traces_per_org].visible:
+            current_org = i
+            break
+    
+    for i in range(6 * traces_per_org):
+        org_idx = i // traces_per_org
+        year_idx_for_org = i % traces_per_org
+        visibility.append(org_idx == current_org and year_idx_for_org == year_idx)
+    
+    step = dict(
+        method="update",
+        args=[{"visible": visibility}],
+        label=str(year)
+    )
+    steps.append(step)
+
+sliders = [dict(
+    active=0,
+    currentvalue={"prefix": "Year: "},
+    pad={"t": 50},
+    steps=steps
+)]
+
+# Update layout
+fig.update_layout(
+    title=dict(
+        text="Global Distribution of Security Incidents by Organization Type (1997-2025)<br>" +
+             "<sup>Geographic Heat Map of Aid Workers Affected</sup>",
+        x=0.5,
+        font=dict(size=16)
+    ),
+    width=800,
+    height=600,
+    geo=dict(
+        showframe=False,
+        showcoastlines=True,
+        projection_type='orthographic',
+        coastlinecolor='#deebf7',
+        landcolor='khaki',
+        showocean=True,
+        oceancolor='lightblue',
+        bgcolor='white'
+    ),
+    updatemenus=[dict(
+        type="buttons",
+        direction="down",
+        x=-0.15,
+        y=0.5,
+        showactive=True,
+        buttons=buttons,
+        bgcolor='#ACFFDB',
+        bordercolor='#deebf7'
+    )],
+    paper_bgcolor='white',
+    plot_bgcolor='#f8fbff',
+    margin=dict(l=100, r=20, t=100, b=80),
+    sliders=sliders
+)
+
+fig.show()
+```
+
+<br>
+
+The geographic heat map provides a detailed analysis of security incidents affecting aid workers globally, segmented by organization type from 1997 to 2025. Organizational Variations: The map reveals distinct patterns of risk exposure across different organizations, with the UN and INGOs experiencing higher numbers of incidents in regions with protracted conflicts, such as Sub-Saharan Africa and the Middle East. Temporal Trends: The interactive slider highlights fluctuations over time, showing increased incidents in conflict-prone regions during peak years of violence, especially for UN and ICRC personnel in areas of armed conflict. Regional Concentrations: Certain organizations, such as NNGOs and NRCS/IFRC, show a higher concentration of affected aid workers in specific countries with localized crises, often reflecting their operational focus in high-risk regions. Impact of Conflict Dynamics: The color gradient highlights the magnitude of affected aid workers, with darker regions indicating higher incident counts, emphasizing the disproportionate risks faced by organizations in conflict-heavy zones. The ability to filter by organization type and year offers valuable insights into evolving patterns of security threats, enabling humanitarian agencies to tailor their security protocols and resource allocation more effectively.
+
+## Trends in Incidents
+
+### National vs International Aid Worker Impact
+
+```{python}
+# Common layout settings for both plots
+common_layout = {
+    'width': 800,
+    'height': 500,
+    'margin': dict(l=100, r=20, t=100, b=50),
+    'title_x': 0.5,
+    'title_font_size': 16,
+    'plot_bgcolor': '#f8fbff',
+    'paper_bgcolor': 'white',
+    'showlegend': True,
+    'legend': dict(
+        yanchor="top",
+        y=0.85,
+        xanchor="left",
+        x=0.25,
+        bgcolor='rgba(248, 251, 255, 0.8)',
+        bordercolor='#deebf7'
+    ),
+    'xaxis': dict(
+        gridcolor='white',
+        showgrid=False,
+        showline=True,
+        linewidth=1,
+        linecolor='#deebf7',
+        dtick=1,
+        ticks='outside'
+    ),
+    'yaxis': dict(
+        gridcolor='#deebf7',
+        showgrid=True,
+        griddash='dash',
+        gridwidth=0.5,
+        showline=True,
+        linecolor='#deebf7',
+        ticks='outside',
+        zeroline=False
+    )
+}
+
+# First Plot - Organizations
+organization_data = incidents[['Year', 'UN', 'INGO', 'ICRC', 'NRCS and IFRC', 'NNGO', 'Other']].groupby('Year').sum().reset_index()
+organization_data_melted = organization_data.melt(
+    id_vars=['Year'], 
+    value_vars=['UN', 'INGO', 'ICRC', 'NRCS and IFRC', 'NNGO', 'Other'],
+    var_name='Organization', value_name='Count'
+)
+
+fig1 = go.Figure()
+
+color_map = {
+    'UN': '#009edb',
+    'INGO': '#1a365d',
+    'ICRC': '#ee2a24',
+    'NRCS and IFRC': '#f5333f',
+    'NNGO': '#2d9a40',
+    'Other': '#666666'
+}
+
+for org in organization_data_melted['Organization'].unique():
+    org_data = organization_data_melted[organization_data_melted['Organization'] == org]
+    fig1.add_trace(
+        go.Scatter(
+            name=org,
+            x=org_data['Year'],
+            y=org_data['Count'],
+            mode='lines+markers',
+            line=dict(
+                color=color_map[org],
+                width=2
+            ),
+            marker=dict(
+                size=6,
+                opacity=0.85
+            ),
+            visible=False
+        )
+    )
+
+fig1.data[0].visible = True
+
+buttons1 = []
+for idx, org in enumerate(organization_data_melted['Organization'].unique()):
+    visibility = [i == idx for i in range(len(organization_data_melted['Organization'].unique()))]
+    buttons1.append(dict(label=org, method="update", args=[{"visible": visibility}]))
+
+fig1.update_layout(
+    **common_layout,
+    updatemenus=[dict(
+        type="buttons",
+        direction="down",
+        x=-0.15,
+        y=0.5,
+        showactive=True,
+        buttons=buttons1,
+        bgcolor='#ACFFDB',
+        bordercolor='#deebf7'
+    )],
+    title="Impact of Security Incidents by Organization Type (1997-2025)<br>"
+          "<sup>Annual Distribution of Affected Workers for Each Organization</sup>",
+    yaxis_title="Number of Aid Workers Affected",
+    xaxis_title="Year",
+    hovermode='x unified'
+)
+
+# Second Plot - National/International Impact
+national_international_data = incidents[['Year', 'Nationals killed', 'Nationals wounded', 'Nationals kidnapped', 
+                                      'Internationals killed', 'Internationals wounded', 'Internationals kidnapped']]
+annual_data = national_international_data.groupby('Year').sum().reset_index()
+
+fig2 = go.Figure()
+
+for impact in ['killed', 'wounded', 'kidnapped']:
+    fig2.add_trace(
+        go.Scatter(
+            name='Nationals',
+            x=annual_data['Year'],
+            y=annual_data[f'Nationals {impact}'],
+            mode='lines+markers',
+            line=dict(
+                color='#2171b5',
+                width=2
+            ),
+            marker=dict(
+                size=6,
+                opacity=0.85
+            ),
+            visible=False
+        )
+    )
+    fig2.add_trace(
+        go.Scatter(
+            name='Internationals',
+            x=annual_data['Year'],
+            y=annual_data[f'Internationals {impact}'],
+            mode='lines+markers',
+            line=dict(
+                color='#ee2a24',
+                width=2
+            ),
+            marker=dict(
+                size=6,
+                opacity=0.85
+            ),
+            visible=False
+        )
+    )
+
+fig2.data[0].visible = True
+fig2.data[1].visible = True
+
+buttons2 = [
+    dict(label="Killed", method="update", args=[{"visible": [True, True, False, False, False, False]}]),
+    dict(label="Wounded", method="update", args=[{"visible": [False, False, True, True, False, False]}]),
+    dict(label="Kidnapped", method="update", args=[{"visible": [False, False, False, False, True, True]}])
+]
+
+fig2.update_layout(
+    **common_layout,
+    updatemenus=[dict(
+        type="buttons",
+        direction="down",
+        x=-0.15,
+        y=0.5,
+        showactive=True,
+        buttons=buttons2,
+        bgcolor='#ACFFDB',
+        bordercolor='#deebf7'
+    )],
+    title="Impact of Security Incidents on Aid Workers (1997-2025)<br>"
+          "<sup>Analysis of Fatalities, Injuries, and Kidnappings by National vs International Status</sup>",
+    yaxis_title="Number of Aid Workers Affected",
+    xaxis_title="Year",
+    hovermode='x unified'
+)
+
+# Update hover templates
+fig1.update_traces(
+    hovertemplate="<b>%{x}</b><br>" +
+                  "%{y} Aid Workers Affected<br>" +
+                  "<extra></extra>"
+)
+fig2.update_traces(
+    hovertemplate="<b>%{x}</b><br>" +
+                  "%{y} Aid Workers Affected<br>" +
+                  "<extra></extra>"
+)
+```
+
+Analysis of incidents affecting aid workers reveals that national staff consistently face higher risks across all types of violence, including direct attacks, kidnappings, and detention.
+
+Kidnapping incidents targeting aid workers display distinct temporal and regional patterns compared to other forms of violence. While armed attacks and bombings tend to peak during active conflicts, kidnapping incidents exhibit a more sustained pattern over time, often persisting long after formal hostilities have ended. Kidnappings are frequently used as a means of generating ransom or exerting political leverage, with national staff being more vulnerable due to their perceived lower ransom value or political importance. Notably, the Middle East, particularly Syria, and parts of West Africa have witnessed a surge in kidnappings targeting humanitarian workers.
+
+A deeper exploration of regional trends highlights notable variations in the targeting of international versus national staff. It also highlights the need for tailored approaches to protect national and international staff differently, given their unique exposure to threats in varying operational environments.
+
+### Organizational Impact Trends and Analysis
+
+```{python}
+fig1.show()
+```
+
+The line chart visualization tracking the number of aid workers affected by organization type over time uncovers important trends in victimization patterns. International NGOs (INGOs) and UN agencies remain the most affected, owing to their large operational footprint and engagement in high-risk regions. However, national NGOs and local humanitarian organizations are increasingly bearing the brunt of violence, particularly in contexts where international organizations operate indirectly through local partners. The trend highlights the changing landscape of aid delivery, where local actors play a critical role but often lack the security resources available to international organizations. This disparity exposes local staff to greater dangers, underscoring the need for donor investment in local capacity and security infrastructure.
+
+## Topic Analysis
+
+```{python}
+import pandas as pd
+import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+import plotly.graph_objects as go
+from collections import Counter
+
+# Download required NLTK data
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+
+# Prepare the text data
+def preprocess_text(text):
+    if isinstance(text, str):
+        # Tokenize
+        tokens = word_tokenize(text.lower())
+        # Remove stopwords and non-alphabetic tokens
+        stop_words = set(stopwords.words('english'))
+        stop_words.update(['killed', 'wounded', 'kidnapped', 'staff', 'unknown'])  # Add domain-specific stopwords
+        tokens = [token for token in tokens if token.isalpha() and token not in stop_words]
+        return ' '.join(tokens)
+    return ''
+
+# Preprocess the details
+processed_docs = incidents['Details'].apply(preprocess_text)
+
+# Create document-term matrix
+vectorizer = CountVectorizer(max_features=1000, max_df=0.95, min_df=2)
+doc_term_matrix = vectorizer.fit_transform(processed_docs)
+
+# Create and fit LDA model
+n_topics = 6
+lda_model = LatentDirichletAllocation(n_components=n_topics, random_state=42)
+lda_output = lda_model.fit_transform(doc_term_matrix)
+
+# Get feature names (words)
+feature_names = vectorizer.get_feature_names_out()
+
+# Create topic-word distribution visualization
+def create_topic_visualization(lda_model, feature_names, n_words=10):
+    # Get top words for each topic
+    topic_words = []
+    topic_weights = []
+    
+    for topic_idx, topic in enumerate(lda_model.components_):
+        top_words_idx = topic.argsort()[:-n_words-1:-1]
+        topic_words.append([feature_names[i] for i in top_words_idx])
+        topic_weights.append([topic[i] for i in top_words_idx])
+
+    # Create figure
+    fig = go.Figure()
+
+    # Add traces for each topic
+    for i in range(n_topics):
+        fig.add_trace(
+            go.Bar(
+                name=f'Topic {i+1}',
+                x=topic_words[i],
+                y=topic_weights[i],
+                visible=False
+            )
+        )
+
+    # Make first topic visible by default
+    fig.data[0].visible = True
+
+    # Create buttons for topics
+    buttons = []
+    for i in range(n_topics):
+        visibility = [j == i for j in range(n_topics)]
+        buttons.append(
+            dict(
+                label=f'Topic {i+1}',
+                method='update',
+                args=[{'visible': visibility}]
+            )
+        )
+
+    # Update layout
+    fig.update_layout(
+        title=dict(
+            text="Topic Analysis of Security Incidents (1997-2025)<br>" +
+                 "<sup>Most Frequent Terms in Each Topic</sup>",
+            x=0.5,
+            font=dict(size=16)
+        ),
+        width=800,
+        height=500,
+        showlegend=False,
+        updatemenus=[dict(
+            type="buttons",
+            direction="down",
+            x=-0.15,
+            y=0.5,
+            showactive=True,
+            buttons=buttons,
+            bgcolor='#ACFFDB',
+            bordercolor='#deebf7'
+        )],
+        xaxis_title="Terms",
+        yaxis_title="Term Weight in Topic",
+        plot_bgcolor='#f8fbff',
+        paper_bgcolor='white',
+        margin=dict(l=100, r=20, t=100, b=100),
+        xaxis=dict(
+            tickangle=45,
+            gridcolor='white',
+            showgrid=False
+        ),
+        yaxis=dict(
+            gridcolor='#deebf7',
+            showgrid=True,
+            griddash='dash',
+            gridwidth=0.5
+        )
+    )
+
+    return fig
+
+# Create and display the visualization
+topic_viz = create_topic_visualization(lda_model, feature_names)
+topic_viz.show()
+```
+
+The term weight in this visualization represents the relative importance or probability of each word within a given topic, calculated through Latent Dirichlet Allocation (LDA). The procedure involves several key steps: First, the incident details undergo preprocessing where the text is tokenized, converted to lowercase, and cleaned by removing stopwords (common words like "the," "and") and domain-specific terms (like "killed," "wounded," "staff") that might skew the analysis. Then, a document-term matrix is created using CountVectorizer, which converts the text into numerical data by counting word frequencies. The LDA model analyzes this matrix to identify 6 distinct topics, treating each topic as a probability distribution over words. The term weight shown in the bar charts represents how strongly each word is associated with its topic - higher weights indicate words that are more characteristic or definitive of that topic. For example, if "vehicle" has a high weight in Topic 1, it suggests that incidents involving vehicles are a major theme in that topic cluster. The visualization allows users to explore these topic-word relationships through an interactive interface, where each bar's height corresponds to the word's probability weight within its topic, effectively showing which terms are most influential in defining each thematic cluster of security incidents.
+
+The topic analysis of security incidents from 1997 to 2025 reveals recurring themes of violence targeting humanitarian and international personnel. Incidents often involved aid workers, INGO members, and national staff being shot, injured, or abducted, highlighting the persistent threat to those providing humanitarian assistance. Attacks frequently targeted UN personnel and contracted drivers, with many incidents occurring during transport or supply operations, emphasizing the dangers faced by logistical staff. Abductions of national and international staff were also common, reflecting a trend of hostage-taking or armed confrontations. Additionally, incidents involving NGO members, vehicles, and volunteers being ambushed or attacked demonstrate the wide-ranging risks across different operational contexts. The prominence of terms like "shot," "injured," "vehicle," and "armed" underscores the prevalence of violence in these settings, affecting both international and local actors engaged in humanitarian work.
+
+## Recommendations
+
+Based on the analyses, several key recommendations emerge for enhancing security in humanitarian operations. First, enhanced security protocols should be developed, focusing on region-specific measures and differentiated protection strategies for both national and international staff, given the varying risks they face. Organizational coordination is also critical, with stronger information sharing between organizations operating in high-risk areas and the creation of joint security frameworks for regions with multiple entities. In terms of risk mitigation, resources should be focused on identified temporal and geographic hotspots, with early warning systems developed based on incident patterns. Additionally, training for national staff, who face higher risks, should be prioritized. From a policy perspective, it is essential to regularly review and update security protocols to respond to emerging threats, strengthen coordination with local authorities, and enhance support systems for affected aid workers and their families. These interactive visualizations provide valuable insights for security planning and risk management in humanitarian operations, underscoring the need for continued adaptation of security measures and greater attention to the protection of vulnerable aid workers, particularly those in high-risk environments. These recommendations will be discussed in further detail in the conclusions and recommendations section.

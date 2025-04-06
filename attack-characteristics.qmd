@@ -1,0 +1,198 @@
+---
+title: "Attack Characteristics"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    number-sections: false
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+    df-print: paged
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## Distribution of Actor Types
+
+The following treemap visualization shows the relative frequency of different actor types involved in security incidents:
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+incidents = pd.read_csv("data/security_incidents.csv")
+
+actor_counts = incidents['Actor type'].value_counts().reset_index()
+actor_counts.columns = ['Actor type', 'Count']
+
+fig = px.treemap(actor_counts, 
+                 path=['Actor type'], 
+                 values='Count',
+                 title='Treemap of Actor Types Involved in Incidents',
+                 color='Count',
+                 color_continuous_scale='Reds')
+fig.show()
+```
+
+<br> **Key Insights:**
+
+-   Non-state armed groups emerge as the predominant actors in security incidents
+
+-   Unknown actors represent a significant portion of incidents, highlighting challenges in attribution
+
+-   Criminal entities form a substantial category, suggesting that not all incidents are politically motivated
+
+-   The diversity of actor types demonstrates the complex threat landscape faced by aid workers
+
+## Relationship Between Actors and Attack Methods
+
+The following Sankey diagram illustrates the flow between actor types and their preferred methods of attack:
+
+```{python}
+import pandas as pd
+import plotly.graph_objects as go
+
+# Assuming incidents is your dataset
+# Step 1: Extract the top 5 actors and means of attack
+actors = incidents['Actor type'].value_counts().head(6).index.tolist()
+means = incidents['Means of attack'].value_counts().head(6).index.tolist()
+
+# Step 2: Create the source-target pairs and their corresponding values
+
+# Create a mapping of actors and means to indices
+actor_index = {actor: idx for idx, actor in enumerate(actors)}
+means_index = {mean: idx + len(actors) for idx, mean in enumerate(means)}
+
+# Initialize lists for source, target, and values
+source = []
+target = []
+values = []
+
+# Step 3: Aggregate the total affected values by actor and means
+aggregated_data = incidents.groupby(['Actor type', 'Means of attack'])['Total affected'].sum().reset_index()
+
+# Step 4: Generate the flow data based on aggregated total affected
+for _, row in aggregated_data.iterrows():
+    if row['Actor type'] in actor_index and row['Means of attack'] in means_index:
+        # From actor to means, using the aggregated 'total affected' value as the flow
+        source.append(actor_index[row['Actor type']])
+        target.append(means_index[row['Means of attack']])
+        values.append(row['Total affected'])  # Using aggregated total affected value for the flow
+
+# Step 5: Create Sankey diagram with grey-colored links
+fig = go.Figure(go.Sankey(
+    node=dict(
+        pad=15,
+        thickness=20,
+        line=dict(color='white', width=0.5),
+        label=actors + means  # Combining the labels for actors and means
+    ),
+    link=dict(
+        source=source,
+        target=target,
+        value=values
+    )
+))
+
+fig.update_layout(title_text='Sankey Diagram of Actor-Type and Means of Attack Flow (Based on Total Affected)', font_size=10)
+fig.show()
+```
+
+<br> **Key Findings:**
+
+-   Different actor types show distinct patterns in their choice of attack methods
+
+-   Certain attack methods are more commonly employed across multiple actor types
+
+-   The width of flows indicates the severity (total affected) of different actor-method combinations
+
+-   This relationship helps in:
+
+    -   Predicting potential attack methods based on known actors in an area
+
+    -   Developing targeted security measures for specific threat actors
+
+    -   Understanding which combinations pose the greatest risk to aid workers
+
+## Hierarchical Analysis of Attack Contexts
+
+The sunburst chart below provides a multi-level view of how attack contexts, methods, and actors interrelate:
+
+```{python}
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+
+# Sample Data (Replace with your dataset)
+data = pd.read_csv("data/security_incidents.csv") # Load your actual 
+
+
+
+# 4. Sunburst Chart of Attack Context
+fig4 = px.sunburst(
+    data, 
+    path=['Attack context', 'Means of attack', 'Actor type'],
+    values='Nationals killed',
+    title="Hierarchical Breakdown of Attack Context<br>" +
+                "<sup>Breakdown by Means of Attack and Actor Type</sup>"
+          
+)
+
+# Update layout for better visualization
+fig4.update_layout(
+    margin=dict(t=80, l=0, r=0, b=0),
+    width=800,
+    height=800
+)
+
+fig4.show()
+```
+
+<br> **Critical Observations:**
+
+-   Attack contexts show varying levels of complexity in terms of methods and actors involved
+
+-   Certain combinations of context-method-actor appear more frequently than others
+
+-   The visualization reveals:
+
+    -   Primary contexts where nationals are most at risk
+
+    -   How different actors operate within specific contexts
+
+    -   The relationship between attack methods and their operational contexts
+
+## Implications for Security Planning
+
+These visualizations collectively inform:
+
+1.  **Risk Assessment:**
+
+    -   Identification of most common threat actors
+
+    -   Understanding of preferred attack methods
+
+    -   Context-specific risk patterns
+
+2.  **Security Protocols:**
+
+    -   Development of targeted security measures
+
+    -   Training focus areas for field personnel
+
+    -   Resource allocation for different security scenarios
+
+3.  **Strategic Planning:**
+
+    -   Geographic deployment considerations
+
+    -   Partner organization security coordination
+
+    -   Incident response preparation
+
+This analysis helps humanitarian organizations better understand and prepare for security threats in their operational environments.

@@ -1,0 +1,406 @@
+---
+title: "About"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    number-sections: false
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+    df-print: paged
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## Global Humanitarian Incident Analysis and Aid Worker Protection Advocacy
+
+This project is a comprehensive visual analysis of security incidents affecting aid workers from 1997 to 2025. The data was sourced from the Aid Worker Security Database (AWSD). The AWSD is a comprehensive database of security incidents affecting aid workers, including the number of fatalities, injuries, and abductions.
+
+This project aims to analyze security incidents affecting humanitarian aid workers and organizations in high-risk areas, providing critical insights for improving safety measures and risk management strategies. This work contributes to the ongoing efforts to protect vulnerable aid workers and strengthen security practices in the field.
+
+```{python}
+import plotly.express as px
+import plotly.graph_objects as go
+import pandas as pd
+
+# Load data
+incidents = pd.read_csv('data/security_incidents.csv')
+
+# Create figure
+fig = go.Figure()
+
+# Filter out rows with missing coordinates
+incidents_clean = incidents[incidents['Latitude'].notna() & 
+                          incidents['Longitude'].notna() & 
+                          incidents['Means of attack'].notna()]
+
+# Initial year data
+initial_year = incidents_clean['Year'].min()
+initial_data = incidents_clean[incidents_clean['Year'] == initial_year]
+
+# Create discrete color mapping using distinct colors
+unique_attacks = sorted(incidents_clean['Means of attack'].unique())
+colors = [
+    '#1f77b4',  # Blue
+    '#ff7f0e',  # Orange
+    '#2ca02c',  # Green
+    '#d62728',  # Red
+    '#9467bd',  # Purple
+    '#8c564b',  # Brown
+    '#e377c2',  # Pink
+    '#7f7f7f',  # Gray
+    '#bcbd22',  # Yellow-green
+    '#17becf'   # Cyan
+]
+
+# Ensure we have enough colors
+while len(colors) < len(unique_attacks):
+    colors.extend(colors)
+colors = colors[:len(unique_attacks)]
+
+# Create color dictionary
+color_dict = dict(zip(unique_attacks, colors))
+
+# Add scatter trace for initial year
+fig.add_trace(go.Scattergeo(
+    lon=initial_data['Longitude'],
+    lat=initial_data['Latitude'],
+    mode='markers',
+    marker=dict(
+        size=8,
+        color=[color_dict[attack] for attack in initial_data['Means of attack']],
+        opacity=0.7,
+        line=dict(color='black', width=0.5)
+    ),
+    customdata=initial_data[['Year', 'City', 'Country', 'Means of attack', 'Total affected']].values,
+    name='Incidents'
+))
+
+# Update geos settings
+fig.update_geos(
+    projection_type='orthographic',
+    showland=True,
+    landcolor='khaki',
+    showocean=True,
+    oceancolor='lightblue',
+    showframe=False,
+    showcountries=False,
+    showcoastlines=True,
+    coastlinecolor='gray',
+    coastlinewidth=0.5,
+    projection=dict(
+        rotation=dict(
+            lon=0,
+            lat=20,
+            roll=0
+        )
+    ),
+    center=dict(
+        lon=0,
+        lat=20
+    ),
+    # Disable auto-centering
+    fitbounds=False
+)
+
+# Create steps for the year slider
+steps = []
+years = sorted(incidents_clean['Year'].unique())
+for year in years:
+    year_data = incidents_clean[incidents_clean['Year'] == year]
+    step = dict(
+        method='update',
+        args=[{
+            'lon': [year_data['Longitude']],
+            'lat': [year_data['Latitude']],
+            'marker.color': [[color_dict[attack] for attack in year_data['Means of attack']]],
+            'customdata': [year_data[['Year', 'City', 'Country', 'Means of attack', 'Total affected']].values]
+        }, {
+            # Maintain the same view when changing years
+            'geo.projection.rotation': [fig.layout.geo.projection.rotation],
+            'geo.center': [fig.layout.geo.center]
+        }],
+        label=str(year)
+    )
+    steps.append(step)
+
+# Add legend traces with better organization
+for attack_type in sorted(unique_attacks):  # Sort attack types alphabetically
+    fig.add_trace(go.Scattergeo(
+        lon=[None],
+        lat=[None],
+        mode='markers',
+        marker=dict(
+            size=10,
+            color=color_dict[attack_type]
+        ),
+        showlegend=False
+    ))
+
+# Update layout
+fig.update_layout(
+    height=700,
+    width=800,
+    title=dict(
+        text='Global Security Incidents (1997-2023)<br>' +
+             '<sup>Drag to rotate globe; Colored by Attack Types',
+        x=0.5,
+        xanchor='center',
+        yanchor='top',
+        y=0.95,
+        font=dict(size=20)
+    ),
+    margin=dict(l=0, r=0, t=100, b=0),  # Increased left margin for 
+    sliders=[dict(
+        active=0,
+        currentvalue={"prefix": "Year: "},
+        pad={"t": 50},
+        steps=steps
+    )],
+    geo=dict(
+        projection_scale=1,
+        domain=dict(x=[0.25, 1])  # Shifted the map to the right to make room for legend
+    )
+)
+
+# Add hover template
+fig.update_traces(
+    hovertemplate=(
+        '<b>Location:</b> %{customdata[1]}, %{customdata[2]}<br>' +
+        '<b>Year:</b> %{customdata[0]}<br>' +
+        '<b>Attack Type:</b> %{customdata[3]}<br>' +
+        '<b>Total Affected:</b> %{customdata[4]}<br>' +
+        '<b>Coordinates:</b> (%{lat:.2f}, %{lon:.2f})<br>' +
+        '<extra></extra>'
+    ),
+    selector=dict(mode='markers')
+)
+
+fig.show()
+```
+
+<br>
+
+This analysis utilizes comprehensive data on security incidents to provide insights into:
+
+-   The distribution and nature of attacks on aid workers
+
+-   Differences in vulnerability between various humanitarian organizations
+
+-   The relative impact on national versus international staff
+
+-   Temporal and geographical patterns in security incidents
+
+-   Emerging trends and potential areas of concern
+
+Through interactive visualizations and detailed analysis, we aim to contribute to better understanding of security risks facing humanitarian workers and inform evidence-based approaches to protecting aid workers while maintaining effective humanitarian operations in challenging environments.
+
+### Why This Is Important
+
+The importance of this project lies in its potential to significantly improve the safety and security of humanitarian aid workers operating in high-risk environments. Humanitarian organizations play a crucial role in providing relief to vulnerable populations affected by conflict, natural disasters, and other crises. However, these workers often face significant dangers, including physical attacks, abductions, and other security threats, which can disrupt aid efforts and lead to loss of life. By analyzing patterns in security incidents, this project provides actionable insights that can help organizations tailor their security protocols to the specific risks they face in different regions.
+
+```{python}
+import pandas as pd
+import plotly.graph_objects as go
+
+# Assuming 'incidents' is your DataFrame with actual data
+
+# Group by 'Country' and 'Year' to sum 'Total affected'
+total_affected_by_country = incidents.groupby(['Country', 'Year'])['Total affected'].sum().reset_index()
+
+# Find the top 10 countries based on total affected
+top_10_countries = total_affected_by_country.groupby('Country')['Total affected'].sum().nlargest(10).index
+
+# Filter the data for the top 10 countries
+top_10_data = total_affected_by_country[total_affected_by_country['Country'].isin(top_10_countries)]
+
+# Create stacked bar chart for total affected in the top 10 countries
+fig1 = go.Figure()
+
+for country in top_10_countries:
+    country_data = top_10_data[top_10_data['Country'] == country]
+    fig1.add_trace(
+        go.Bar(
+            x=country_data['Year'],
+            y=country_data['Total affected'],
+            name=country
+        )
+    )
+
+# Update layout
+fig1.update_layout(
+    title="Total Affected by Year in Top 10 Countries",
+    barmode='stack',
+    xaxis_title="Year",
+    yaxis_title="Total Affected",
+    updatemenus=[dict(
+        type="buttons",
+        x=0.1,
+        y=1.1
+    )]
+)
+
+fig1.show()
+```
+
+Understanding these patterns allows for more effective allocation of resources, better training for national staff, and improved coordination between organizations working in the same high-risk areas. Ultimately, this work contributes to enhancing the protection of aid workers, ensuring the continuity of humanitarian operations, and safeguarding the lives of those who dedicate themselves to helping others in times of crisis.
+
+```{python}
+# Filter out Unknown actors and group by actor type
+wounded_by_actor = (incidents[incidents['Actor type'] != 'Unknown']
+                   .groupby('Actor type')['Total wounded']
+                   .sum()
+                   .sort_values(ascending=True))
+
+fig = go.Figure(data=[
+    go.Bar(
+        y=wounded_by_actor.index,
+        x=wounded_by_actor.values,
+        orientation='h',
+        marker_color='indianred'
+    )
+])
+
+fig.update_layout(
+    title={
+        'text': 'Total Number of Wounded by Known Actor Type',
+        'x': 0.5,
+        'xanchor': 'center'
+    },
+    xaxis_title='Number of Wounded',
+    yaxis_title='Known Actor Type',
+    plot_bgcolor='white',
+    height=400,  # Adjusted height since we removed Unknown category
+    width=800,
+    margin=dict(l=200)  # Left margin for actor type labels
+)
+
+# Add gridlines
+fig.update_xaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor='rgba(128, 128, 128, 0.2)'
+)
+
+fig.show()
+
+```
+
+## Relevance Today
+
+The humanitarian landscape has become increasingly complex, with aid workers operating in environments characterized by political instability, armed conflict, and deteriorating security conditions.
+
+```{python}
+# Create a bubble chart comparing casualties across regions
+region_stats = incidents.groupby('Region').agg({
+    'Total killed': 'sum',
+    'Total wounded': 'sum',
+    'Total kidnapped': 'sum',
+    'Total affected': 'count'  # Using this for bubble size (number of incidents)
+}).reset_index()
+
+# Remove rows where Region is empty/null
+region_stats = region_stats[region_stats['Region'].notna()]
+
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(
+    x=region_stats['Total killed'],
+    y=region_stats['Total wounded'],
+    mode='markers',
+    marker=dict(
+        size=region_stats['Total affected'],
+        sizeref=2.*max(region_stats['Total affected'])/(20.**2),
+        sizemin=4,
+        color=region_stats['Total kidnapped'],
+        colorscale='Viridis',
+        showscale=True,
+        colorbar=dict(title='Total Kidnapped')
+    ),
+    text=region_stats.apply(
+        lambda x: f"Region: {x['Region']}<br>" +
+                 f"Killed: {x['Total killed']}<br>" +
+                 f"Wounded: {x['Total wounded']}<br>" +
+                 f"Kidnapped: {x['Total kidnapped']}<br>" +
+                 f"Total Incidents: {x['Total affected']}",
+        axis=1
+    ),
+    hoverinfo='text'
+))
+
+fig.update_layout(
+    title={
+        'text': 'Regional Analysis of Aid Worker Casualties (1997-2023)<br>' +
+                '<sup>Bubble size represents number of incidents; color indicates kidnappings</sup>',
+        'x': 0.5,
+        'xanchor': 'center',
+        'y': 0.95,
+        'yanchor': 'top'
+    },
+    xaxis_title='Total Killed',
+    yaxis_title='Total Wounded',
+    plot_bgcolor='white',
+    height=600,
+    width=800
+)
+
+# Add gridlines
+fig.update_xaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor='rgba(128, 128, 128, 0.2)',
+    zeroline=True,
+    zerolinewidth=1,
+    zerolinecolor='rgba(128, 128, 128, 0.2)'
+)
+
+fig.update_yaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor='rgba(128, 128, 128, 0.2)',
+    zeroline=True,
+    zerolinewidth=1,
+    zerolinecolor='rgba(128, 128, 128, 0.2)'
+)
+
+fig.show()
+```
+
+Understanding these security challenges is crucial for several reasons:
+
+1.  Operational Effectiveness:
+
+    -   Security incidents can lead to program suspensions or closures
+
+    -   Access to vulnerable populations may be compromised
+
+    -   Resource allocation and aid delivery strategies need constant adaptation
+
+2.  Organizational Impact:
+
+    -   Different types of organizations (UN, INGOs, Local NGOs) face varying levels of risk
+
+    -   Security incidents affect both national and international staff
+
+    -   Organizational responses and security protocols must be tailored accordingly
+
+3.  Geographic Considerations:
+
+    -   Security threats vary significantly by region and context
+
+    -   Local political dynamics influence incident patterns
+
+    -   Certain regions consistently show higher risk levels
+
+4.  Temporal Trends:
+
+    -   Security situations evolve over time
+
+    -   New threats emerge while others diminish
+
+    -   Historical patterns can inform future security planning

@@ -1,0 +1,222 @@
+---
+title: "Conclusions and Recommendations"
+date: "March 20, 2025"
+format:
+  html: 
+    toc: true
+    number-sections: false
+    code-fold: true
+    smooth-scroll: true
+    toc-title: "Contents"
+    toc-depth: 3
+    df-print: paged
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+
+## Key Findings
+
+```{python}
+# 1. Summary of Key Metrics Over Time
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import pandas as pd
+import plotly.express as px
+incidents = pd.read_csv('data/security_incidents.csv')
+# Create yearly summary
+yearly_summary = incidents.groupby('Year').agg({
+    'Total affected': 'sum',
+    'Total killed': 'sum',
+    'Total wounded': 'sum',
+    'Total kidnapped': 'sum',
+    'Incident ID': 'count'  # Count of incidents
+}).reset_index()
+
+# Create subplot with dual y-axis
+fig1 = make_subplots(specs=[[{"secondary_y": True}]])
+
+# Add lines for casualties
+fig1.add_trace(
+    go.Scatter(x=yearly_summary['Year'], y=yearly_summary['Total killed'],
+               name="Fatalities", line=dict(color='red')),
+    secondary_y=False,
+)
+fig1.add_trace(
+    go.Scatter(x=yearly_summary['Year'], y=yearly_summary['Total wounded'],
+               name="Wounded", line=dict(color='orange')),
+    secondary_y=False,
+)
+fig1.add_trace(
+    go.Scatter(x=yearly_summary['Year'], y=yearly_summary['Total kidnapped'],
+               name="Kidnapped", line=dict(color='blue')),
+    secondary_y=False,
+)
+
+# Add bar for incident count
+fig1.add_trace(
+    go.Bar(x=yearly_summary['Year'], y=yearly_summary['Incident ID'],
+           name="Number of Incidents", opacity=0.3),
+    secondary_y=True,
+)
+
+# Update layout
+fig1.update_layout(
+    title="Trend Analysis: Incidents and Casualties (1997-2023)",
+    plot_bgcolor='white',
+    height=500,
+    width=800,
+    legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01
+    ),
+    hovermode='x unified'
+)
+
+# Update axes
+fig1.update_xaxes(title_text="Year", showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.2)')
+fig1.update_yaxes(title_text="Number of Casualties", secondary_y=False, 
+                  showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.2)')
+fig1.update_yaxes(title_text="Number of Incidents", secondary_y=True)
+
+fig1.show()
+
+```
+<br>
+
+### 1. Temporal and Geographic Patterns
+- Security incidents show distinct temporal patterns with notable increases in specific regions
+- Certain countries consistently experience higher incident rates
+- Regional hotspots shift over time, suggesting evolving security challenges
+- Seasonal variations in attack patterns have been identified
+
+### 2. Attack Characteristics
+- Non-state armed groups represent the primary threat actors
+- Different actor types show distinct preferences in attack methods
+- Attack contexts vary significantly by region and over time
+- Certain attack types show higher lethality rates than others
+
+### 3. Victim Demographics
+- National staff face disproportionately higher risks compared to international personnel
+- Gender distribution of victims varies by region and attack type
+- Male aid workers constitute the majority of victims
+- Improved reporting has reduced the proportion of unknown gender cases
+
+### 4. Impact Analysis
+- Total affected numbers show significant variation by:
+  - Geographic location
+  - Attack type
+  - Actor type
+  - Operational context
+
+## Recommendations
+
+```{python}
+
+# 2. Impact Matrix
+# Create summary by attack type and context
+impact_matrix = incidents.groupby(['Means of attack', 'Attack context']).agg({
+    'Total affected': 'sum',
+    'Incident ID': 'count'
+}).reset_index()
+
+# Create heatmap
+fig2 = px.density_heatmap(
+    impact_matrix,
+    x='Means of attack',
+    y='Attack context',
+    z='Total affected',
+    title='Impact Matrix: Attack Types vs Contexts',
+    labels={'Total affected': 'Total Affected'},
+    color_continuous_scale='Reds'
+)
+
+# Update layout
+fig2.update_layout(
+    height=600,
+    width=800,
+    xaxis_title="Means of Attack",
+    yaxis_title="Attack Context",
+    xaxis={'tickangle': 45}
+)
+
+fig2.show()
+```
+
+<br>
+
+### 1. Security Protocol Enhancement
+- **Context-Specific Training:**
+  - Develop targeted training programs based on regional threat patterns
+  - Include scenario-based exercises reflecting common attack types
+  - Provide gender-specific security awareness training
+
+- **Risk Assessment:**
+  - Implement dynamic risk assessment tools
+  - Regular updates based on emerging threat patterns
+  - Include gender-sensitive risk analysis
+
+### 2. Operational Adjustments
+- **Staff Deployment:**
+  - Consider seasonal risk patterns in deployment planning
+  - Balance team composition based on context-specific risks
+  - Enhance support systems for national staff
+
+- **Resource Allocation:**
+  - Prioritize high-risk areas for security investments
+  - Allocate resources based on threat patterns
+  - Invest in local security infrastructure
+
+### 3. Prevention and Mitigation
+- **Early Warning Systems:**
+  - Develop indicators based on identified patterns
+  - Implement real-time monitoring systems
+  - Establish rapid response protocols
+
+- **Partnership Development:**
+  - Strengthen coordination with local security actors
+  - Enhance information sharing among organizations
+  - Develop community-based protection strategies
+
+### 4. Data and Reporting
+- **Incident Reporting:**
+  - Standardize incident reporting procedures
+  - Improve gender-disaggregated data collection
+  - Enhance documentation of attack contexts
+
+- **Analysis and Learning:**
+  - Regular pattern analysis and trend identification
+  - Systematic review of incident responses
+  - Sharing of lessons learned across organizations
+
+## Future Considerations
+
+### 1. Emerging Threats
+- Monitor evolving attack methods
+- Track new actor types and motivations
+- Assess impact of technological changes
+
+### 2. Adaptive Response
+- Regular update of security protocols
+- Flexible response mechanisms
+- Innovation in protection strategies
+
+### 3. Capacity Building
+- Enhance local security management capacity
+- Develop specialized training programs
+- Strengthen institutional memory
+
+## Final Thoughts
+The analysis reveals complex patterns in security incidents affecting humanitarian workers. Success in protecting aid workers requires:
+- Continuous adaptation of security measures
+- Enhanced understanding of local contexts
+- Strong coordination among stakeholders
+- Commitment to evidence-based approaches
+
+These findings and recommendations aim to contribute to the ongoing effort to enhance the safety and security of humanitarian personnel worldwide.
+

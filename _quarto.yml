@@ -1,0 +1,60 @@
+project:
+  type: website
+  output-dir: _hasite  
+  render:
+    - "*.qmd"
+
+website:
+  title: "Global Humanitarian Incident Analysis"
+  favicon: images/icons8-earth-care-doodle-96.png  
+  search:  
+    location: navbar
+    type: textbox
+  navbar:
+    background: "#2E3B4E"  
+    foreground: "#FFFFFF"  
+    logo: images/icons8-earth-care-doodle-96.png 
+    right:
+      - icon: github
+        href: https://github.com/shanayw22
+        aria-label: "View on GitHub"
+    left:
+      - text: "Introduction"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Analysis"
+        menu:
+          - text: "Attack Characteristics"
+            href: attack-characteristics.qmd
+          - text: "Victim Demographics"
+            href: victim-demographics.qmd
+          - text: "Attack Trends"
+            href: attack-trends.qmd
+      - text: "Conclusions & Recommendations"
+        href: conclusions-and-recommendations.qmd
+      - text: "Appendix"
+        href: appendix.qmd
+  page-footer:
+    left: "© 2025 Global Humanitarian Incident Analysis. All rights reserved."
+    right: 
+      - text: "Privacy Policy"
+        href: privacy.qmd
+      - text: "Contact Us"
+        href: contact.qmd
+
+format:
+  html:
+    theme: [flatly, custom.scss]  
+    css: styles.css  
+    toc: true  
+    toc-depth: 3
+    toc-expand: true  
+    code-fold: true  
+    code-summary: "Show/Hide Code"
+    smooth-scroll: true
+    link-external-newwindow: true  
+    df-print: paged  
+
+editor:
+  render-on-save: true

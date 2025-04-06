@@ -1,0 +1,28 @@
+/* Customize the navbar background and text */
+.navbar {
+    background-color: #14181e !important; /* Background color */
+    border-bottom: 2px solid #78aeec; /* Optional: Border for effect */
+  }
+  
+  .navbar a.nav-link, .navbar-brand {
+    color: #FFFFFF !important; /* Navbar link text color */
+  }
+  
+  /* Customize active and hover tabs */
+  .navbar a.nav-link.active {
+    background-color: #78aeec !important;
+    color: #FFFFFF !important;
+  }
+  
+  .navbar a.nav-link:hover {
+    background-color: #14181e !important;
+    color: #FFFFFF !important;
+  }
+  
+  /* Footer customization */
+  .footer {
+    background-color: #455874;
+    color: #B0BEC5;
+    padding: 10px 0;
+    text-align: center;
+  }

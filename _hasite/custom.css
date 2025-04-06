@@ -1,0 +1,22 @@
+/* Customize the tabset (navbar) background color */
+.nav-tabs {
+  background-color: #2E3B4E; /* Change to your desired color */
+  border-bottom: 2px solid #e24a4a; /* Optional: add border for effect */
+}
+
+/* Customize active tab color */
+.nav-tabs .nav-link.active {
+  background-color: #e24a4a; /* Active tab color */
+  color: #FFFFFF; /* Text color for active tab */
+}
+
+/* Customize inactive tab color */
+.nav-tabs .nav-link {
+  color: #B0BEC5; /* Inactive tab text color */
+}
+
+/* Change hover effect */
+.nav-tabs .nav-link:hover {
+  background-color: #3B4B5B;
+  color: #FFFFFF;
+}

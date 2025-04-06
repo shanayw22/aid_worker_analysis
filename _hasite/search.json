@@ -1,0 +1,359 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "",
+    "text": "The global humanitarian sector faces significant security challenges that directly impact aid delivery and worker safety. In recent decades, humanitarian aid workers have increasingly become targets of violence, with incidents ranging from direct attacks to kidnappings and collateral damage in conflict zones. This analysis examines security incidents affecting aid workers from 1997 to 2025, focusing on the patterns, geographical distribution, and organizational impact of these events. Through interactive visualizations, we explore the evolving nature of security threats and their implications for different humanitarian organizations."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "",
+    "text": "The global humanitarian sector faces significant security challenges that directly impact aid delivery and worker safety. In recent decades, humanitarian aid workers have increasingly become targets of violence, with incidents ranging from direct attacks to kidnappings and collateral damage in conflict zones. This analysis examines security incidents affecting aid workers from 1997 to 2025, focusing on the patterns, geographical distribution, and organizational impact of these events. Through interactive visualizations, we explore the evolving nature of security threats and their implications for different humanitarian organizations."
+  },
+  {
+    "objectID": "index.html#geographic-distribution-of-incidents",
+    "href": "index.html#geographic-distribution-of-incidents",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "Geographic Distribution of Incidents",
+    "text": "Geographic Distribution of Incidents\n\nMap of Incidents by Attack Type\nThe chart below provides a comprehensive overview of how attack types targeting aid workers vary across regions and time, with key insights highlighting critical trends. Regional Concentration of Attack Types: Certain attacks, such as aerial bombardments, are concentrated in the Middle East, particularly in Syria and Yemen, with a significant rise in recent years, resulting in high casualties.\n\n\n\n\n\n\n\n\n\nTemporal Trends in Attack Patterns: Attack frequencies fluctuate over time, with aerial bombardments and bombings increasing in the Middle East over the past decade, while Sub-Saharan Africa has experienced a surge in armed assaults and ambushes. Conversely, kidnappings remain more prevalent in West Africa and parts of South Asia, driven by ransom demands and political motives. Magnitude of Impact: The size of the markers illustrates the scale of affected aid workers, with larger markers in conflict-heavy regions indicating high-impact events that often lead to mass casualties. The graph highlights these regional and temporal patterns, enabling humanitarian organizations to develop targeted strategies that mitigate risks, enhance preparedness, and safeguard aid workers operating in high-risk environments.\n\n\nMap of Affected Aid Workers by Organization\n\n\n                            \n                                            \n\n\n\nThe geographic heat map provides a detailed analysis of security incidents affecting aid workers globally, segmented by organization type from 1997 to 2025. Organizational Variations: The map reveals distinct patterns of risk exposure across different organizations, with the UN and INGOs experiencing higher numbers of incidents in regions with protracted conflicts, such as Sub-Saharan Africa and the Middle East. Temporal Trends: The interactive slider highlights fluctuations over time, showing increased incidents in conflict-prone regions during peak years of violence, especially for UN and ICRC personnel in areas of armed conflict. Regional Concentrations: Certain organizations, such as NNGOs and NRCS/IFRC, show a higher concentration of affected aid workers in specific countries with localized crises, often reflecting their operational focus in high-risk regions. Impact of Conflict Dynamics: The color gradient highlights the magnitude of affected aid workers, with darker regions indicating higher incident counts, emphasizing the disproportionate risks faced by organizations in conflict-heavy zones. The ability to filter by organization type and year offers valuable insights into evolving patterns of security threats, enabling humanitarian agencies to tailor their security protocols and resource allocation more effectively."
+  },
+  {
+    "objectID": "index.html#national-vs-international-aid-worker-impact",
+    "href": "index.html#national-vs-international-aid-worker-impact",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "National vs International Aid Worker Impact",
+    "text": "National vs International Aid Worker Impact\n\n\n                            \n                                            \n\n\nAnalysis of incidents affecting aid workers reveals that national staff consistently face higher risks across all types of violence, including direct attacks, kidnappings, and detention.\nKidnapping incidents targeting aid workers display distinct temporal and regional patterns compared to other forms of violence. While armed attacks and bombings tend to peak during active conflicts, kidnapping incidents exhibit a more sustained pattern over time, often persisting long after formal hostilities have ended. Kidnappings are frequently used as a means of generating ransom or exerting political leverage, with national staff being more vulnerable due to their perceived lower ransom value or political importance. Notably, the Middle East, particularly Syria, and parts of West Africa have witnessed a surge in kidnappings targeting humanitarian workers.\nA deeper exploration of regional trends highlights notable variations in the targeting of international versus national staff. It also highlights the need for tailored approaches to protect national and international staff differently, given their unique exposure to threats in varying operational environments."
+  },
+  {
+    "objectID": "index.html#organizational-impact-analysis",
+    "href": "index.html#organizational-impact-analysis",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "Organizational Impact Analysis",
+    "text": "Organizational Impact Analysis\n\n\n                            \n                                            \n\n\nThe line chart visualization tracking the number of aid workers affected by organization type over time uncovers important trends in victimization patterns. International NGOs (INGOs) and UN agencies remain the most affected, owing to their large operational footprint and engagement in high-risk regions. However, national NGOs and local humanitarian organizations are increasingly bearing the brunt of violence, particularly in contexts where international organizations operate indirectly through local partners. The trend highlights the changing landscape of aid delivery, where local actors play a critical role but often lack the security resources available to international organizations. This disparity exposes local staff to greater dangers, underscoring the need for donor investment in local capacity and security infrastructure.\n\n\n\n\n\n\n\n\n\n\n                            \n                                            \n\n\n\nTopic Interpretations:\n\nTopic 1: one, aid, worker, ingo, national, injured, male, member, shot, female\n\nTopic 2: un, one, driver, shot, contracted, member, truck, injured, agency, injuries\n\nTopic 3: ingo, released, two, national, abducted, international, armed, later, members, guard\n\nTopic 4: aid, one, ngo, injured, two, attack, workers, members, hit, volunteer\n\nTopic 5: member, ingo, one, national, armed, ngo, vehicle, shot, injured, men\n\nTopic 6: national, un, ingo, shot, international, icrc, vehicle, ambush, driver, red"
+  },
+  {
+    "objectID": "index.html#recommendations",
+    "href": "index.html#recommendations",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "Recommendations",
+    "text": "Recommendations\nBased on the analyses, several key recommendations emerge for enhancing security in humanitarian operations. First, enhanced security protocols should be developed, focusing on region-specific measures and differentiated protection strategies for both national and international staff, given the varying risks they face. Organizational coordination is also critical, with stronger information sharing between organizations operating in high-risk areas and the creation of joint security frameworks for regions with multiple entities. In terms of risk mitigation, resources should be focused on identified temporal and geographic hotspots, with early warning systems developed based on incident patterns. Additionally, training for national staff, who face higher risks, should be prioritized. From a policy perspective, it is essential to regularly review and update security protocols to respond to emerging threats, strengthen coordination with local authorities, and enhance support systems for affected aid workers and their families. These interactive visualizations provide valuable insights for security planning and risk management in humanitarian operations, underscoring the need for continued adaptation of security measures and greater attention to the protection of vulnerable aid workers, particularly those in high-risk environments. These recommendations will be discussed in further detail in the conclusions and recommendations section."
+  },
+  {
+    "objectID": "index.html#topic-analysis",
+    "href": "index.html#topic-analysis",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "Topic Analysis",
+    "text": "Topic Analysis\n\n\n                            \n                                            \n\n\nThe term weight in this visualization represents the relative importance or probability of each word within a given topic, calculated through Latent Dirichlet Allocation (LDA). The procedure involves several key steps: First, the incident details undergo preprocessing where the text is tokenized, converted to lowercase, and cleaned by removing stopwords (common words like “the,” “and”) and domain-specific terms (like “killed,” “wounded,” “staff”) that might skew the analysis. Then, a document-term matrix is created using CountVectorizer, which converts the text into numerical data by counting word frequencies. The LDA model analyzes this matrix to identify 6 distinct topics, treating each topic as a probability distribution over words. The term weight shown in the bar charts represents how strongly each word is associated with its topic - higher weights indicate words that are more characteristic or definitive of that topic. For example, if “vehicle” has a high weight in Topic 1, it suggests that incidents involving vehicles are a major theme in that topic cluster. The visualization allows users to explore these topic-word relationships through an interactive interface, where each bar’s height corresponds to the word’s probability weight within its topic, effectively showing which terms are most influential in defining each thematic cluster of security incidents.\nThe topic analysis of security incidents from 1997 to 2025 reveals recurring themes of violence targeting humanitarian and international personnel. Incidents often involved aid workers, INGO members, and national staff being shot, injured, or abducted, highlighting the persistent threat to those providing humanitarian assistance. Attacks frequently targeted UN personnel and contracted drivers, with many incidents occurring during transport or supply operations, emphasizing the dangers faced by logistical staff. Abductions of national and international staff were also common, reflecting a trend of hostage-taking or armed confrontations. Additionally, incidents involving NGO members, vehicles, and volunteers being ambushed or attacked demonstrate the wide-ranging risks across different operational contexts. The prominence of terms like “shot,” “injured,” “vehicle,” and “armed” underscores the prevalence of violence in these settings, affecting both international and local actors engaged in humanitarian work."
+  },
+  {
+    "objectID": "index.html#trends-in-incidents",
+    "href": "index.html#trends-in-incidents",
+    "title": "Mapping Threats to Aid Workers",
+    "section": "Trends in Incidents",
+    "text": "Trends in Incidents\n\nNational vs International Aid Worker Impact\n\n\n                            \n                                            \n\n\nAnalysis of incidents affecting aid workers reveals that national staff consistently face higher risks across all types of violence, including direct attacks, kidnappings, and detention.\nKidnapping incidents targeting aid workers display distinct temporal and regional patterns compared to other forms of violence. While armed attacks and bombings tend to peak during active conflicts, kidnapping incidents exhibit a more sustained pattern over time, often persisting long after formal hostilities have ended. Kidnappings are frequently used as a means of generating ransom or exerting political leverage, with national staff being more vulnerable due to their perceived lower ransom value or political importance. Notably, the Middle East, particularly Syria, and parts of West Africa have witnessed a surge in kidnappings targeting humanitarian workers.\nA deeper exploration of regional trends highlights notable variations in the targeting of international versus national staff. It also highlights the need for tailored approaches to protect national and international staff differently, given their unique exposure to threats in varying operational environments.\n\n\nOrganizational Impact Trends and Analysis\n\n\n                            \n                                            \n\n\nThe line chart visualization tracking the number of aid workers affected by organization type over time uncovers important trends in victimization patterns. International NGOs (INGOs) and UN agencies remain the most affected, owing to their large operational footprint and engagement in high-risk regions. However, national NGOs and local humanitarian organizations are increasingly bearing the brunt of violence, particularly in contexts where international organizations operate indirectly through local partners. The trend highlights the changing landscape of aid delivery, where local actors play a critical role but often lack the security resources available to international organizations. This disparity exposes local staff to greater dangers, underscoring the need for donor investment in local capacity and security infrastructure."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project is a comprehensive visual analysis of security incidents affecting aid workers from 1997 to 2025. The data was sourced from the Aid Worker Security Database (AWSD). The AWSD is a comprehensive database of security incidents affecting aid workers, including the number of fatalities, injuries, and abductions.\nThis project aims to analyze security incidents affecting humanitarian aid workers and organizations in high-risk areas, providing critical insights for improving safety measures and risk management strategies. This work contributes to the ongoing efforts to protect vulnerable aid workers and strengthen security practices in the field.\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n\nThis analysis utilizes comprehensive data on security incidents to provide insights into:\n\nThe distribution and nature of attacks on aid workers\nDifferences in vulnerability between various humanitarian organizations\nThe relative impact on national versus international staff\nTemporal and geographical patterns in security incidents\nEmerging trends and potential areas of concern\n\nThrough interactive visualizations and detailed analysis, we aim to contribute to better understanding of security risks facing humanitarian workers and inform evidence-based approaches to protecting aid workers while maintaining effective humanitarian operations in challenging environments.\n\n\nThe importance of this project lies in its potential to significantly improve the safety and security of humanitarian aid workers operating in high-risk environments. Humanitarian organizations play a crucial role in providing relief to vulnerable populations affected by conflict, natural disasters, and other crises. However, these workers often face significant dangers, including physical attacks, abductions, and other security threats, which can disrupt aid efforts and lead to loss of life. By analyzing patterns in security incidents, this project provides actionable insights that can help organizations tailor their security protocols to the specific risks they face in different regions.\n\n\n                            \n                                            \n\n\nUnderstanding these patterns allows for more effective allocation of resources, better training for national staff, and improved coordination between organizations working in the same high-risk areas. Ultimately, this work contributes to enhancing the protection of aid workers, ensuring the continuity of humanitarian operations, and safeguarding the lives of those who dedicate themselves to helping others in times of crisis."
+  },
+  {
+    "objectID": "about.html#about",
+    "href": "about.html#about",
+    "title": "About",
+    "section": "",
+    "text": "This project is a comprehensive visual analysis of security incidents affecting aid workers from 1997 to 2025. The data was sourced from the Aid Worker Security Database (AWSD). The AWSD is a comprehensive database of security incidents affecting aid workers, including the number of fatalities, injuries, and abductions.\nThis project aims to analyze security incidents affecting humanitarian aid workers and organizations in high-risk areas, providing critical insights for improving safety measures and risk management strategies. This work contributes to the ongoing efforts to protect vulnerable aid workers and strengthen security practices in the field.\n\n\n\n\n\n\n\n\n\n\nThe importance of this project lies in its potential to significantly improve the safety and security of humanitarian aid workers operating in high-risk environments. Humanitarian organizations play a crucial role in providing relief to vulnerable populations affected by conflict, natural disasters, and other crises. However, these workers often face significant dangers, including physical attacks, abductions, and other security threats, which can disrupt aid efforts and lead to loss of life. By analyzing patterns in security incidents, this project provides actionable insights that can help organizations tailor their security protocols to the specific risks they face in different regions. Understanding these patterns allows for more effective allocation of resources, better training for national staff, and improved coordination between organizations working in the same high-risk areas. Ultimately, this work contributes to enhancing the protection of aid workers, ensuring the continuity of humanitarian operations, and safeguarding the lives of those who dedicate themselves to helping others in times of crisis.\n\n\n\n\n\n\n\n\n\n\n\nI am a Data Scientist with a strong background in data engineering, machine learning, and natural language processing, currently pursuing my Master of Science in Data Science and Analytics at Georgetown University. With hands-on experience leading teams and deploying machine learning models in both commercial and research settings, I am passionate about leveraging data to drive impactful solutions. My professional journey includes working as a Data Team Lead at Argus Media, where I optimized ETL pipelines. My research interests span across topics like global conflict analysis, food waste prediction, and bias detection in news coverage. Through my work, I strive to create data-driven solutions that are both innovative and socially relevant, with a focus on improving security and risk management in humanitarian operations.\n\n\n\n\n\nThe humanitarian landscape has become increasingly complex, with aid workers operating in environments characterized by political instability, armed conflict, and deteriorating security conditions. Understanding these security challenges is crucial for several reasons:\n\nOperational Effectiveness:\n\nSecurity incidents can lead to program suspensions or closures\nAccess to vulnerable populations may be compromised\nResource allocation and aid delivery strategies need constant adaptation\n\nOrganizational Impact:\n\nDifferent types of organizations (UN, INGOs, Local NGOs) face varying levels of risk\nSecurity incidents affect both national and international staff\nOrganizational responses and security protocols must be tailored accordingly\n\nGeographic Considerations:\n\nSecurity threats vary significantly by region and context\nLocal political dynamics influence incident patterns\nCertain regions consistently show higher risk levels\n\nTemporal Trends:\n\nSecurity situations evolve over time\nNew threats emerge while others diminish\nHistorical patterns can inform future security planning\n\n\nThis analysis utilizes comprehensive data on security incidents to provide insights into:\n\nThe distribution and nature of attacks on aid workers\nDifferences in vulnerability between various humanitarian organizations\nThe relative impact on national versus international staff\nTemporal and geographical patterns in security incidents\nEmerging trends and potential areas of concern\n\nThrough interactive visualizations and detailed analysis, we aim to contribute to better understanding of security risks facing humanitarian workers and inform evidence-based approaches to protecting aid workers while maintaining effective humanitarian operations in challenging environments."
+  },
+  {
+    "objectID": "about.html#why-is-this-important",
+    "href": "about.html#why-is-this-important",
+    "title": "About",
+    "section": "2 Why is this important?",
+    "text": "2 Why is this important?\nThe importance of this project lies in its potential to significantly improve the safety and security of humanitarian aid workers operating in high-risk environments. Humanitarian organizations play a crucial role in providing relief to vulnerable populations affected by conflict, natural disasters, and other crises. However, these workers often face significant dangers, including physical attacks, abductions, and other security threats, which can disrupt aid efforts and lead to loss of life. By analyzing patterns in security incidents, this project provides actionable insights that can help organizations tailor their security protocols to the specific risks they face in different regions. Understanding these patterns allows for more effective allocation of resources, better training for national staff, and improved coordination between organizations working in the same high-risk areas. Ultimately, this work contributes to enhancing the protection of aid workers, ensuring the continuity of humanitarian operations, and safeguarding the lives of those who dedicate themselves to helping others in times of crisis.\n\n\n\n\n\n\n\n\nThe humanitarian landscape has become increasingly complex, with aid workers operating in environments characterized by political instability, armed conflict, and deteriorating security conditions. Understanding these security challenges is crucial for several reasons:\n\nOperational Effectiveness:\n\nSecurity incidents can lead to program suspensions or closures\nAccess to vulnerable populations may be compromised\nResource allocation and aid delivery strategies need constant adaptation\n\nOrganizational Impact:\n\nDifferent types of organizations (UN, INGOs, Local NGOs) face varying levels of risk\nSecurity incidents affect both national and international staff\nOrganizational responses and security protocols must be tailored accordingly\n\nGeographic Considerations:\n\nSecurity threats vary significantly by region and context\nLocal political dynamics influence incident patterns\nCertain regions consistently show higher risk levels\n\nTemporal Trends:\n\nSecurity situations evolve over time\nNew threats emerge while others diminish\nHistorical patterns can inform future security planning\n\n\nThis analysis utilizes comprehensive data on security incidents to provide insights into:\n\nThe distribution and nature of attacks on aid workers\nDifferences in vulnerability between various humanitarian organizations\nThe relative impact on national versus international staff\nTemporal and geographical patterns in security incidents\nEmerging trends and potential areas of concern\n\nThrough interactive visualizations and detailed analysis, we aim to contribute to better understanding of security risks facing humanitarian workers and inform evidence-based approaches to protecting aid workers while maintaining effective humanitarian operations in challenging environments."
+  },
+  {
+    "objectID": "about.html#the-project",
+    "href": "about.html#the-project",
+    "title": "About",
+    "section": "",
+    "text": "This project is a comprehensive visual analysis of security incidents affecting aid workers from 1997 to 2025. The data was sourced from the Aid Worker Security Database (AWSD). The AWSD is a comprehensive database of security incidents affecting aid workers, including the number of fatalities, injuries, and abductions.\nThis project aims to analyze security incidents affecting humanitarian aid workers and organizations in high-risk areas, providing critical insights for improving safety measures and risk management strategies. This work contributes to the ongoing efforts to protect vulnerable aid workers and strengthen security practices in the field.\n\n\n\n\n\n\n\n\n\n\nThe importance of this project lies in its potential to significantly improve the safety and security of humanitarian aid workers operating in high-risk environments. Humanitarian organizations play a crucial role in providing relief to vulnerable populations affected by conflict, natural disasters, and other crises. However, these workers often face significant dangers, including physical attacks, abductions, and other security threats, which can disrupt aid efforts and lead to loss of life. By analyzing patterns in security incidents, this project provides actionable insights that can help organizations tailor their security protocols to the specific risks they face in different regions. Understanding these patterns allows for more effective allocation of resources, better training for national staff, and improved coordination between organizations working in the same high-risk areas. Ultimately, this work contributes to enhancing the protection of aid workers, ensuring the continuity of humanitarian operations, and safeguarding the lives of those who dedicate themselves to helping others in times of crisis.\n\n\n\n\n\n\n\n\n\n\n\nI am a Data Scientist with a strong background in data engineering, machine learning, and natural language processing, currently pursuing my Master of Science in Data Science and Analytics at Georgetown University. With hands-on experience leading teams and deploying machine learning models in both commercial and research settings, I am passionate about leveraging data to drive impactful solutions. My professional journey includes working as a Data Team Lead at Argus Media, where I optimized ETL pipelines. My research interests span across topics like global conflict analysis, food waste prediction, and bias detection in news coverage. Through my work, I strive to create data-driven solutions that are both innovative and socially relevant, with a focus on improving security and risk management in humanitarian operations.\n\n\n\n\n\nThe humanitarian landscape has become increasingly complex, with aid workers operating in environments characterized by political instability, armed conflict, and deteriorating security conditions. Understanding these security challenges is crucial for several reasons:\n\nOperational Effectiveness:\n\nSecurity incidents can lead to program suspensions or closures\nAccess to vulnerable populations may be compromised\nResource allocation and aid delivery strategies need constant adaptation\n\nOrganizational Impact:\n\nDifferent types of organizations (UN, INGOs, Local NGOs) face varying levels of risk\nSecurity incidents affect both national and international staff\nOrganizational responses and security protocols must be tailored accordingly\n\nGeographic Considerations:\n\nSecurity threats vary significantly by region and context\nLocal political dynamics influence incident patterns\nCertain regions consistently show higher risk levels\n\nTemporal Trends:\n\nSecurity situations evolve over time\nNew threats emerge while others diminish\nHistorical patterns can inform future security planning\n\n\nThis analysis utilizes comprehensive data on security incidents to provide insights into:\n\nThe distribution and nature of attacks on aid workers\nDifferences in vulnerability between various humanitarian organizations\nThe relative impact on national versus international staff\nTemporal and geographical patterns in security incidents\nEmerging trends and potential areas of concern\n\nThrough interactive visualizations and detailed analysis, we aim to contribute to better understanding of security risks facing humanitarian workers and inform evidence-based approaches to protecting aid workers while maintaining effective humanitarian operations in challenging environments."
+  },
+  {
+    "objectID": "about.html#global-humanitarian-incident-analysis",
+    "href": "about.html#global-humanitarian-incident-analysis",
+    "title": "About",
+    "section": "",
+    "text": "This project is a comprehensive visual analysis of security incidents affecting aid workers from 1997 to 2025. The data was sourced from the Aid Worker Security Database (AWSD). The AWSD is a comprehensive database of security incidents affecting aid workers, including the number of fatalities, injuries, and abductions.\nThis project aims to analyze security incidents affecting humanitarian aid workers and organizations in high-risk areas, providing critical insights for improving safety measures and risk management strategies. This work contributes to the ongoing efforts to protect vulnerable aid workers and strengthen security practices in the field.\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n\n\nThe importance of this project lies in its potential to significantly improve the safety and security of humanitarian aid workers operating in high-risk environments. Humanitarian organizations play a crucial role in providing relief to vulnerable populations affected by conflict, natural disasters, and other crises. However, these workers often face significant dangers, including physical attacks, abductions, and other security threats, which can disrupt aid efforts and lead to loss of life. By analyzing patterns in security incidents, this project provides actionable insights that can help organizations tailor their security protocols to the specific risks they face in different regions. Understanding these patterns allows for more effective allocation of resources, better training for national staff, and improved coordination between organizations working in the same high-risk areas. Ultimately, this work contributes to enhancing the protection of aid workers, ensuring the continuity of humanitarian operations, and safeguarding the lives of those who dedicate themselves to helping others in times of crisis.\n\n\n\nI am a Data Scientist with a strong background in data engineering, machine learning, and natural language processing, currently pursuing my Master of Science in Data Science and Analytics at Georgetown University. With hands-on experience leading teams and deploying machine learning models in both commercial and research settings, I am passionate about leveraging data to drive impactful solutions. My professional journey includes working as a Data Team Lead at Argus Media, where I optimized ETL pipelines. My research interests span across topics like global conflict analysis, food waste prediction, and bias detection in news coverage. Through my work, I strive to create data-driven solutions that are both innovative and socially relevant, with a focus on improving security and risk management in humanitarian operations."
+  },
+  {
+    "objectID": "about.html#challenges-faced-today",
+    "href": "about.html#challenges-faced-today",
+    "title": "About",
+    "section": "Challenges Faced Today",
+    "text": "Challenges Faced Today\nThe humanitarian landscape has become increasingly complex, with aid workers operating in environments characterized by political instability, armed conflict, and deteriorating security conditions. Understanding these security challenges is crucial for several reasons:\n\nOperational Effectiveness:\n\nSecurity incidents can lead to program suspensions or closures\nAccess to vulnerable populations may be compromised\nResource allocation and aid delivery strategies need constant adaptation\n\nOrganizational Impact:\n\nDifferent types of organizations (UN, INGOs, Local NGOs) face varying levels of risk\nSecurity incidents affect both national and international staff\nOrganizational responses and security protocols must be tailored accordingly\n\nGeographic Considerations:\n\nSecurity threats vary significantly by region and context\nLocal political dynamics influence incident patterns\nCertain regions consistently show higher risk levels\n\nTemporal Trends:\n\nSecurity situations evolve over time\nNew threats emerge while others diminish\nHistorical patterns can inform future security planning\n\n\nThis analysis utilizes comprehensive data on security incidents to provide insights into:\n\nThe distribution and nature of attacks on aid workers\nDifferences in vulnerability between various humanitarian organizations\nThe relative impact on national versus international staff\nTemporal and geographical patterns in security incidents\nEmerging trends and potential areas of concern\n\nThrough interactive visualizations and detailed analysis, we aim to contribute to better understanding of security risks facing humanitarian workers and inform evidence-based approaches to protecting aid workers while maintaining effective humanitarian operations in challenging environments."
+  },
+  {
+    "objectID": "about.html#relevance-today",
+    "href": "about.html#relevance-today",
+    "title": "About",
+    "section": "Relevance Today",
+    "text": "Relevance Today\nThe humanitarian landscape has become increasingly complex, with aid workers operating in environments characterized by political instability, armed conflict, and deteriorating security conditions.\n\n\n                            \n                                            \n\n\nUnderstanding these security challenges is crucial for several reasons:\n\nOperational Effectiveness:\n\nSecurity incidents can lead to program suspensions or closures\nAccess to vulnerable populations may be compromised\nResource allocation and aid delivery strategies need constant adaptation\n\nOrganizational Impact:\n\nDifferent types of organizations (UN, INGOs, Local NGOs) face varying levels of risk\nSecurity incidents affect both national and international staff\nOrganizational responses and security protocols must be tailored accordingly\n\nGeographic Considerations:\n\nSecurity threats vary significantly by region and context\nLocal political dynamics influence incident patterns\nCertain regions consistently show higher risk levels\n\nTemporal Trends:\n\nSecurity situations evolve over time\nNew threats emerge while others diminish\nHistorical patterns can inform future security planning"
+  },
+  {
+    "objectID": "about.html#global-humanitarian-incident-analysis-and-aid-worker-protection-advocacy",
+    "href": "about.html#global-humanitarian-incident-analysis-and-aid-worker-protection-advocacy",
+    "title": "About",
+    "section": "",
+    "text": "This project is a comprehensive visual analysis of security incidents affecting aid workers from 1997 to 2025. The data was sourced from the Aid Worker Security Database (AWSD). The AWSD is a comprehensive database of security incidents affecting aid workers, including the number of fatalities, injuries, and abductions.\nThis project aims to analyze security incidents affecting humanitarian aid workers and organizations in high-risk areas, providing critical insights for improving safety measures and risk management strategies. This work contributes to the ongoing efforts to protect vulnerable aid workers and strengthen security practices in the field.\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n\nThis analysis utilizes comprehensive data on security incidents to provide insights into:\n\nThe distribution and nature of attacks on aid workers\nDifferences in vulnerability between various humanitarian organizations\nThe relative impact on national versus international staff\nTemporal and geographical patterns in security incidents\nEmerging trends and potential areas of concern\n\nThrough interactive visualizations and detailed analysis, we aim to contribute to better understanding of security risks facing humanitarian workers and inform evidence-based approaches to protecting aid workers while maintaining effective humanitarian operations in challenging environments.\n\n\nThe importance of this project lies in its potential to significantly improve the safety and security of humanitarian aid workers operating in high-risk environments. Humanitarian organizations play a crucial role in providing relief to vulnerable populations affected by conflict, natural disasters, and other crises. However, these workers often face significant dangers, including physical attacks, abductions, and other security threats, which can disrupt aid efforts and lead to loss of life. By analyzing patterns in security incidents, this project provides actionable insights that can help organizations tailor their security protocols to the specific risks they face in different regions.\n\n\n                            \n                                            \n\n\nUnderstanding these patterns allows for more effective allocation of resources, better training for national staff, and improved coordination between organizations working in the same high-risk areas. Ultimately, this work contributes to enhancing the protection of aid workers, ensuring the continuity of humanitarian operations, and safeguarding the lives of those who dedicate themselves to helping others in times of crisis."
+  },
+  {
+    "objectID": "victim-demographics.html",
+    "href": "victim-demographics.html",
+    "title": "Victim Demographics",
+    "section": "",
+    "text": "The following chart shows the gender breakdown of affected individuals in the dataset.\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n Key Insights:\n\nMale aid workers consistently represent the majority of affected individuals across all years\nThere’s a notable spike in incidents affecting all genders around 2008-2009\nThe proportion of cases with unknown gender has decreased in recent years, suggesting improved reporting practices\nFemale aid workers show relatively consistent numbers over time, but remain a smaller proportion of total victims"
+  },
+  {
+    "objectID": "victim-demographics.html#gender-breakdown-of-affected-individuals",
+    "href": "victim-demographics.html#gender-breakdown-of-affected-individuals",
+    "title": "Victim Demographics",
+    "section": "",
+    "text": "The following chart shows the gender breakdown of affected individuals in the dataset.\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n Key Insights:\n\nMale aid workers consistently represent the majority of affected individuals across all years\nThere’s a notable spike in incidents affecting all genders around 2008-2009\nThe proportion of cases with unknown gender has decreased in recent years, suggesting improved reporting practices\nFemale aid workers show relatively consistent numbers over time, but remain a smaller proportion of total victims"
+  },
+  {
+    "objectID": "attack-characteristics.html",
+    "href": "attack-characteristics.html",
+    "title": "Attack Characteristics",
+    "section": "",
+    "text": "The following treemap visualization shows the relative frequency of different actor types involved in security incidents:\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n Key Insights:\n\nNon-state armed groups emerge as the predominant actors in security incidents\nUnknown actors represent a significant portion of incidents, highlighting challenges in attribution\nCriminal entities form a substantial category, suggesting that not all incidents are politically motivated\nThe diversity of actor types demonstrates the complex threat landscape faced by aid workers"
+  },
+  {
+    "objectID": "attack-characteristics.html#distribution-of-actor-types",
+    "href": "attack-characteristics.html#distribution-of-actor-types",
+    "title": "Attack Characteristics",
+    "section": "",
+    "text": "The following treemap visualization shows the relative frequency of different actor types involved in security incidents:\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n Key Insights:\n\nNon-state armed groups emerge as the predominant actors in security incidents\nUnknown actors represent a significant portion of incidents, highlighting challenges in attribution\nCriminal entities form a substantial category, suggesting that not all incidents are politically motivated\nThe diversity of actor types demonstrates the complex threat landscape faced by aid workers"
+  },
+  {
+    "objectID": "attack-characteristics.html#relationship-between-actors-and-attack-methods",
+    "href": "attack-characteristics.html#relationship-between-actors-and-attack-methods",
+    "title": "Attack Characteristics",
+    "section": "Relationship Between Actors and Attack Methods",
+    "text": "Relationship Between Actors and Attack Methods\nThe following Sankey diagram illustrates the flow between actor types and their preferred methods of attack:\n\n\n                            \n                                            \n\n\n Key Findings:\n\nDifferent actor types show distinct patterns in their choice of attack methods\nCertain attack methods are more commonly employed across multiple actor types\nThe width of flows indicates the severity (total affected) of different actor-method combinations\nThis relationship helps in:\n\nPredicting potential attack methods based on known actors in an area\nDeveloping targeted security measures for specific threat actors\nUnderstanding which combinations pose the greatest risk to aid workers"
+  },
+  {
+    "objectID": "attack-characteristics.html#hierarchical-analysis-of-attack-contexts",
+    "href": "attack-characteristics.html#hierarchical-analysis-of-attack-contexts",
+    "title": "Attack Characteristics",
+    "section": "Hierarchical Analysis of Attack Contexts",
+    "text": "Hierarchical Analysis of Attack Contexts\nThe sunburst chart below provides a multi-level view of how attack contexts, methods, and actors interrelate:\n\n\n                            \n                                            \n\n\n Critical Observations:\n\nAttack contexts show varying levels of complexity in terms of methods and actors involved\nCertain combinations of context-method-actor appear more frequently than others\nThe visualization reveals:\n\nPrimary contexts where nationals are most at risk\nHow different actors operate within specific contexts\nThe relationship between attack methods and their operational contexts"
+  },
+  {
+    "objectID": "attack-trends.html",
+    "href": "attack-trends.html",
+    "title": "Attack Trends",
+    "section": "",
+    "text": "The following interactive line plot shows how different attack types have affected aid workers over time:\n\n\n\n\n\n\n\n\n Key Insights:\n\nThe visualization reveals distinct patterns in the impact of different attack types over time\nNotable features include:\n\nPeriodic spikes in certain attack types\nLong-term trends in the effectiveness of different attack methods\nSeasonal variations in attack impacts\n\n\nInteractive Features:\n\nClick legend items to focus on specific attack types\nHold Shift to select multiple attack types\nHover over points for detailed information\nPan and zoom to explore specific time periods"
+  },
+  {
+    "objectID": "attack-trends.html#temporal-patterns-in-attack-impact",
+    "href": "attack-trends.html#temporal-patterns-in-attack-impact",
+    "title": "Attack Trends",
+    "section": "",
+    "text": "The following interactive line plot shows how different attack types have affected aid workers over time:\n\n\n\n\n\n\n\n\n Key Insights:\n\nThe visualization reveals distinct patterns in the impact of different attack types over time\nNotable features include:\n\nPeriodic spikes in certain attack types\nLong-term trends in the effectiveness of different attack methods\nSeasonal variations in attack impacts\n\n\nInteractive Features:\n\nClick legend items to focus on specific attack types\nHold Shift to select multiple attack types\nHover over points for detailed information\nPan and zoom to explore specific time periods"
+  },
+  {
+    "objectID": "attack-trends.html#attack-frequency-analysis",
+    "href": "attack-trends.html#attack-frequency-analysis",
+    "title": "Attack Trends",
+    "section": "",
+    "text": "The following line chart shows the frequency of different attack types over time:"
+  },
+  {
+    "objectID": "attack-trends.html#fatalities-by-actor-type",
+    "href": "attack-trends.html#fatalities-by-actor-type",
+    "title": "Attack Trends",
+    "section": "Fatalities by Actor Type",
+    "text": "Fatalities by Actor Type\nThe stacked bar chart below illustrates the annual distribution of fatalities by different actor types:\n\n\n                            \n                                            \n\n\n Key Findings:\n\nThe data reveals patterns in the lethality of different actor types\nNotable trends include:\n\nVariation in the proportion of fatalities attributed to different actors\nChanges in the overall lethality of attacks over time\nIdentification of most lethal actor types"
+  },
+  {
+    "objectID": "attack-trends.html#comparative-analysis-of-aid-worker-casualties",
+    "href": "attack-trends.html#comparative-analysis-of-aid-worker-casualties",
+    "title": "Attack Trends",
+    "section": "Comparative Analysis of Aid Worker Casualties",
+    "text": "Comparative Analysis of Aid Worker Casualties\nThe following visualization examines the trends in casualties among national and international aid workers over time. This analysis is crucial for understanding the differential impacts of security incidents on various categories of humanitarian personnel.\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\n Key Findings:\n\nNational aid workers consistently face higher casualty rates compared to international staff\nThe gap between national and international casualties has widened over time\nWounded personnel generally outnumber fatalities across both categories"
+  },
+  {
+    "objectID": "attack-characteristics.html#implications-for-security-planning",
+    "href": "attack-characteristics.html#implications-for-security-planning",
+    "title": "Attack Characteristics",
+    "section": "Implications for Security Planning",
+    "text": "Implications for Security Planning\nThese visualizations collectively inform:\n\nRisk Assessment:\n\nIdentification of most common threat actors\nUnderstanding of preferred attack methods\nContext-specific risk patterns\n\nSecurity Protocols:\n\nDevelopment of targeted security measures\nTraining focus areas for field personnel\nResource allocation for different security scenarios\n\nStrategic Planning:\n\nGeographic deployment considerations\nPartner organization security coordination\nIncident response preparation\n\n\nThis analysis helps humanitarian organizations better understand and prepare for security threats in their operational environments."
+  },
+  {
+    "objectID": "attack-trends.html#implications-for-humanitarian-operations",
+    "href": "attack-trends.html#implications-for-humanitarian-operations",
+    "title": "Attack Trends",
+    "section": "Implications for Humanitarian Operations",
+    "text": "Implications for Humanitarian Operations\nThis temporal analysis provides valuable insights for:\n\nTactical Planning:\n\nIdentification of high-risk periods\nUnderstanding of evolving threat patterns\nRecognition of emerging attack methods\n\nStrategic Response:\n\nDevelopment of adaptive security measures\nResource allocation for different threat types\nTraining updates based on trend analysis\n\nRisk Mitigation:\n\nSeasonal security adjustments\nActor-specific security protocols\nGeographic deployment considerations\n\n\nThese trends help organizations anticipate and prepare for evolving security challenges in humanitarian operations."
+  },
+  {
+    "objectID": "victim-demographics.html#geographic-distribution-of-gender-based-incidents",
+    "href": "victim-demographics.html#geographic-distribution-of-gender-based-incidents",
+    "title": "Victim Demographics",
+    "section": "Geographic Distribution of Gender-Based Incidents",
+    "text": "Geographic Distribution of Gender-Based Incidents\n\n\n                            \n                                            \n\n\n Key Insights:\n\nCertain countries show disproportionately high numbers of affected aid workers\nThe gender distribution varies significantly by country, with some regions showing higher proportions of female victims\nUnknown gender cases are particularly prevalent in conflict zones, possibly due to reporting challenges\nLarger squares indicate countries with more frequent incidents, helping identify high-risk areas"
+  },
+  {
+    "objectID": "victim-demographics.html#attack-context-distribution",
+    "href": "victim-demographics.html#attack-context-distribution",
+    "title": "Victim Demographics",
+    "section": "Attack Context Distribution",
+    "text": "Attack Context Distribution\n\n\n                            \n                                            \n\n\n Key Insights:\n\nCertain attack contexts consistently result in higher numbers of victims\nThe distribution suggests that some types of attacks are more prevalent or more likely to affect multiple individuals\nUnderstanding these patterns can help in developing targeted security protocols\nThe data highlights which situations pose the greatest risks to aid workers"
+  },
+  {
+    "objectID": "victim-demographics.html#gender-distribution-by-attack-context",
+    "href": "victim-demographics.html#gender-distribution-by-attack-context",
+    "title": "Victim Demographics",
+    "section": "Gender Distribution by Attack Context",
+    "text": "Gender Distribution by Attack Context\n\n\n                            \n                                            \n\n\n Key Insights:\n\nDifferent attack contexts show varying gender distributions among victims\nSome attack types appear to disproportionately affect certain genders\nThe presence of unknown gender cases varies by attack context, suggesting reporting challenges in specific situations\nThis information can be valuable for gender-specific security training and protocols"
+  },
+  {
+    "objectID": "victim-demographics.html#heatmap-of-incidents-by-top-15-regions-and-year",
+    "href": "victim-demographics.html#heatmap-of-incidents-by-top-15-regions-and-year",
+    "title": "Victim Demographics",
+    "section": "Heatmap of Incidents by Top 15 Regions and Year",
+    "text": "Heatmap of Incidents by Top 15 Regions and Year\n\n\n                            \n                                            \n\n\n Key Insights:\n\nThe heatmap reveals temporal hotspots in specific regions\nSome regions show persistent high-risk periods while others show more sporadic patterns\nRecent years indicate shifting patterns of risk across different regions\nThe visualization helps identify both chronic and emerging risk areas for aid operations\n\nThese insights can inform:\n\nSecurity protocol development\nResource allocation for protection measures\nGender-specific safety training\nRegional risk assessment and mitigation strategies"
+  },
+  {
+    "objectID": "conclusions-and-recommendations.html",
+    "href": "conclusions-and-recommendations.html",
+    "title": "Conclusions and Recommendations",
+    "section": "",
+    "text": "Security incidents show distinct temporal patterns with notable increases in specific regions\nCertain countries consistently experience higher incident rates\nRegional hotspots shift over time, suggesting evolving security challenges\nSeasonal variations in attack patterns have been identified\n\n\n\n\n\nNon-state armed groups represent the primary threat actors\nDifferent actor types show distinct preferences in attack methods\nAttack contexts vary significantly by region and over time\nCertain attack types show higher lethality rates than others\n\n\n\n\n\nNational staff face disproportionately higher risks compared to international personnel\nGender distribution of victims varies by region and attack type\nMale aid workers constitute the majority of victims\nImproved reporting has reduced the proportion of unknown gender cases\n\n\n\n\n\nTotal affected numbers show significant variation by:\n\nGeographic location\nAttack type\nActor type\nOperational context"
+  },
+  {
+    "objectID": "conclusions-and-recommendations.html#key-findings",
+    "href": "conclusions-and-recommendations.html#key-findings",
+    "title": "Conclusions and Recommendations",
+    "section": "",
+    "text": "Security incidents show distinct temporal patterns with notable increases in specific regions\nCertain countries consistently experience higher incident rates\nRegional hotspots shift over time, suggesting evolving security challenges\nSeasonal variations in attack patterns have been identified\n\n\n\n\n\nNon-state armed groups represent the primary threat actors\nDifferent actor types show distinct preferences in attack methods\nAttack contexts vary significantly by region and over time\nCertain attack types show higher lethality rates than others\n\n\n\n\n\nNational staff face disproportionately higher risks compared to international personnel\nGender distribution of victims varies by region and attack type\nMale aid workers constitute the majority of victims\nImproved reporting has reduced the proportion of unknown gender cases\n\n\n\n\n\nTotal affected numbers show significant variation by:\n\nGeographic location\nAttack type\nActor type\nOperational context"
+  },
+  {
+    "objectID": "conclusions-and-recommendations.html#recommendations",
+    "href": "conclusions-and-recommendations.html#recommendations",
+    "title": "Conclusions and Recommendations",
+    "section": "Recommendations",
+    "text": "Recommendations\n\n\n                            \n                                            \n\n\n\n\n1. Security Protocol Enhancement\n\nContext-Specific Training:\n\nDevelop targeted training programs based on regional threat patterns\nInclude scenario-based exercises reflecting common attack types\nProvide gender-specific security awareness training\n\nRisk Assessment:\n\nImplement dynamic risk assessment tools\nRegular updates based on emerging threat patterns\nInclude gender-sensitive risk analysis\n\n\n\n\n2. Operational Adjustments\n\nStaff Deployment:\n\nConsider seasonal risk patterns in deployment planning\nBalance team composition based on context-specific risks\nEnhance support systems for national staff\n\nResource Allocation:\n\nPrioritize high-risk areas for security investments\nAllocate resources based on threat patterns\nInvest in local security infrastructure\n\n\n\n\n3. Prevention and Mitigation\n\nEarly Warning Systems:\n\nDevelop indicators based on identified patterns\nImplement real-time monitoring systems\nEstablish rapid response protocols\n\nPartnership Development:\n\nStrengthen coordination with local security actors\nEnhance information sharing among organizations\nDevelop community-based protection strategies\n\n\n\n\n4. Data and Reporting\n\nIncident Reporting:\n\nStandardize incident reporting procedures\nImprove gender-disaggregated data collection\nEnhance documentation of attack contexts\n\nAnalysis and Learning:\n\nRegular pattern analysis and trend identification\nSystematic review of incident responses\nSharing of lessons learned across organizations"
+  },
+  {
+    "objectID": "conclusions-and-recommendations.html#future-considerations",
+    "href": "conclusions-and-recommendations.html#future-considerations",
+    "title": "Conclusions and Recommendations",
+    "section": "Future Considerations",
+    "text": "Future Considerations\n\n1. Emerging Threats\n\nMonitor evolving attack methods\nTrack new actor types and motivations\nAssess impact of technological changes\n\n\n\n2. Adaptive Response\n\nRegular update of security protocols\nFlexible response mechanisms\nInnovation in protection strategies\n\n\n\n3. Capacity Building\n\nEnhance local security management capacity\nDevelop specialized training programs\nStrengthen institutional memory"
+  },
+  {
+    "objectID": "conclusions-and-recommendations.html#final-thoughts",
+    "href": "conclusions-and-recommendations.html#final-thoughts",
+    "title": "Conclusions and Recommendations",
+    "section": "Final Thoughts",
+    "text": "Final Thoughts\nThe analysis reveals complex patterns in security incidents affecting humanitarian workers. Success in protecting aid workers requires: - Continuous adaptation of security measures - Enhanced understanding of local contexts - Strong coordination among stakeholders - Commitment to evidence-based approaches\nThese findings and recommendations aim to contribute to the ongoing effort to enhance the safety and security of humanitarian personnel worldwide."
+  },
+  {
+    "objectID": "appendix.html",
+    "href": "appendix.html",
+    "title": "Appendix",
+    "section": "",
+    "text": "Source: Aid Worker Security Database (AWSD)\nTime Period: 1997-2025\nCoverage: Global security incidents involving humanitarian aid workers\nURL: Humanitarian Outcomes - Aid Worker Security Database\nLast Updated: March 2025\n\n\n\n\n\nIncident Verification\n\nMultiple source verification\nOfficial reports\nMedia coverage\nOrganization confirmations\n\nClassification Criteria\n\nAttack types\nActor categories\nCasualty definitions\nGeographic coding"
+  },
+  {
+    "objectID": "appendix.html#data-sources",
+    "href": "appendix.html#data-sources",
+    "title": "Appendix",
+    "section": "",
+    "text": "Source: Aid Worker Security Database (AWSD)\nTime Period: 1997-2025\nCoverage: Global security incidents involving humanitarian aid workers\nURL: Humanitarian Outcomes - Aid Worker Security Database\nLast Updated: March 2025\n\n\n\n\n\nIncident Verification\n\nMultiple source verification\nOfficial reports\nMedia coverage\nOrganization confirmations\n\nClassification Criteria\n\nAttack types\nActor categories\nCasualty definitions\nGeographic coding"
+  },
+  {
+    "objectID": "appendix.html#data-dictionary",
+    "href": "appendix.html#data-dictionary",
+    "title": "Appendix",
+    "section": "Data Dictionary",
+    "text": "Data Dictionary\n\nKey Variables\n\n\n\nVariable\nDescription\nType\nValues\n\n\n\n\nIncident ID\nUnique identifier for each incident\nInteger\n1-n\n\n\nYear\nYear of incident occurrence\nInteger\n1997-2023\n\n\nCountry\nCountry where incident occurred\nString\nCountry names\n\n\nRegion\nGeographic region\nString\nRegional classifications\n\n\nMeans of attack\nType of attack\nString\nVarious attack types\n\n\nActor type\nCategory of perpetrator\nString\nVarious actor types\n\n\nTotal affected\nTotal number of victims\nInteger\n0-n\n\n\n\n\n\nCategorical Variables\n\nAttack Types\n\nShooting\nKidnapping\nIED/Mine\nAerial bombardment\nOther\n\n\n\nActor Types\n\nNon-state armed groups\nCriminal entities\nState actors\nUnknown\nOther"
+  },
+  {
+    "objectID": "appendix.html#methodology-notes",
+    "href": "appendix.html#methodology-notes",
+    "title": "Appendix",
+    "section": "Methodology Notes",
+    "text": "Methodology Notes\n\nData Processing\n\nCleaning Procedures\n\nHandling missing values\nStandardizing geographic names\nResolving conflicting reports\nValidating casualty counts\n\nAnalysis Methods\n\nTemporal trend analysis\nGeographic clustering\nPattern recognition\nStatistical testing\n\n\n\n\nLimitations\n\nData Collection\n\nPotential reporting bias in conflict zones\nVarying quality of incident documentation\nDelayed reporting in some regions\nIncomplete gender information\n\nGeographic Coverage\n\nVarying reporting quality by region\nAccess limitations in certain areas\nPolitical sensitivities affecting reporting\n\nClassification Challenges\n\nAmbiguous attack types\nMultiple actor involvement\nComplex incident contexts\nEvolving definitions"
+  },
+  {
+    "objectID": "appendix.html#additional-resources",
+    "href": "appendix.html#additional-resources",
+    "title": "Appendix",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nRelated Databases\n\nUN Security Incident Database\n\nComplementary incident data\nUN-specific focus\n\nNGO Security Reports\n\nOrganization-specific data\nRegional security bulletins\n\n\n\n\nReference Materials\n\nSecurity Guidelines\n\nUNDSS Security Guidelines\nInterAction Security Guidelines\nNGO Security Principles\n\nResearch Publications\n\nAcademic studies on aid worker security\nPolicy papers\nAnnual security reports"
+  },
+  {
+    "objectID": "appendix.html#technical-notes",
+    "href": "appendix.html#technical-notes",
+    "title": "Appendix",
+    "section": "Technical Notes",
+    "text": "Technical Notes\n\nVisualization Tools\n\nPython (Version 3.8+)\nLibraries:\n\nPlotly (5.x)\nPandas (1.x)\nAltair (4.x)\n\n\n\n\nData Processing Tools\n\nData cleaning: Pandas\nGeographic analysis: GeoPandas\nStatistical analysis: NumPy, SciPy\n\nThis appendix provides comprehensive documentation of data sources, methodologies, and technical details to support transparency and reproducibility of the analysis."
+  },
+  {
+    "objectID": "privacy.html",
+    "href": "privacy.html",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "All security incident data is collected from publicly available sources\nPersonal identifiers have been removed to protect victim privacy\nGeographic coordinates are generalized for sensitive locations\nTemporal data is standardized to protect operational security\n\n\n\n\n\nAnonymization\n\nNames and personal details are excluded\nOrganization names are generalized where necessary\nSpecific location details are masked when required\n\nSensitive Information\n\nDetails that could compromise ongoing operations are withheld\nInformation about security measures is generalized\nSpecific vulnerabilities are not disclosed\n\n\n\n\n\n\n\n\n\nData should be used for analytical and research purposes only\nRedistribution requires appropriate attribution\nCommercial use requires explicit permission\nSensitive information should not be republished\n\n\n\n\n\nNo reverse engineering of anonymized data\nNo attempt to identify specific individuals\nNo linking with other databases without authorization\nNo use that could compromise aid worker security\n\n\n\n\n\n\n\n\nRegular security audits\nEncrypted storage\nAccess controls\nRegular updates\n\n\n\n\n\nStandardized reporting protocols\nPrivacy-preserving documentation\nSecure communication channels\nControlled access to detailed reports\n\n\n\n\n\n\n\n\nAnnual policy review\nUpdates based on emerging threats\nStakeholder consultation\nCompliance monitoring\n\n\n\n\n\nChanges will be documented\nUsers will be notified of significant updates\nTransition periods for major changes\nRegular communication of policy updates"
+  },
+  {
+    "objectID": "privacy.html#data-collection-and-usage",
+    "href": "privacy.html#data-collection-and-usage",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "All security incident data is collected from publicly available sources\nPersonal identifiers have been removed to protect victim privacy\nGeographic coordinates are generalized for sensitive locations\nTemporal data is standardized to protect operational security\n\n\n\n\n\nAnonymization\n\nNames and personal details are excluded\nOrganization names are generalized where necessary\nSpecific location details are masked when required\n\nSensitive Information\n\nDetails that could compromise ongoing operations are withheld\nInformation about security measures is generalized\nSpecific vulnerabilities are not disclosed"
+  },
+  {
+    "objectID": "privacy.html#information-sharing",
+    "href": "privacy.html#information-sharing",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "Data should be used for analytical and research purposes only\nRedistribution requires appropriate attribution\nCommercial use requires explicit permission\nSensitive information should not be republished\n\n\n\n\n\nNo reverse engineering of anonymized data\nNo attempt to identify specific individuals\nNo linking with other databases without authorization\nNo use that could compromise aid worker security"
+  },
+  {
+    "objectID": "privacy.html#security-measures",
+    "href": "privacy.html#security-measures",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "Regular security audits\nEncrypted storage\nAccess controls\nRegular updates\n\n\n\n\n\nStandardized reporting protocols\nPrivacy-preserving documentation\nSecure communication channels\nControlled access to detailed reports"
+  },
+  {
+    "objectID": "privacy.html#updates-and-changes",
+    "href": "privacy.html#updates-and-changes",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "Annual policy review\nUpdates based on emerging threats\nStakeholder consultation\nCompliance monitoring\n\n\n\n\n\nChanges will be documented\nUsers will be notified of significant updates\nTransition periods for major changes\nRegular communication of policy updates"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact Information",
+    "section": "",
+    "text": "Email: [sw1449@georgetown.edu]\nOffice Hours: Monday-Friday, 9:00 AM - 5:00 PM EST\n\n\n\n\n\nEmail: [sw1449@georgetown.edu]\nResponse Time: Within 24-48 business hours"
+  },
+  {
+    "objectID": "contact.html#general-inquiries",
+    "href": "contact.html#general-inquiries",
+    "title": "Contact Information",
+    "section": "",
+    "text": "Email: [sw1449@georgetown.edu]\nOffice Hours: Monday-Friday, 9:00 AM - 5:00 PM EST\n\n\n\n\n\nEmail: [sw1449@georgetown.edu]\nResponse Time: Within 24-48 business hours"
+  }
+]
